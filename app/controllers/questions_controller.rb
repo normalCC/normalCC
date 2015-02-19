@@ -7,9 +7,9 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new question_params
     if @question.save
-
+      redirect_to @question, notice: "Question created successfully."
     else
-
+      render :new
     end
   end
 
@@ -20,9 +20,9 @@ class QuestionsController < ApplicationController
   def update
     #find_question
     if @question.update question_params
-
+      redirect_to @question, notice: "Question updated successfully."
     else
-
+      render :edit
     end
   end
 
@@ -32,12 +32,13 @@ class QuestionsController < ApplicationController
 
   def index
     @entire_questions = Question.all
+    @questions_recent = Question.recent(3)
   end
 
   def destroy
     #find_question
     @question.destroy
-
+    redirect_to questions_path, notice: "Question deleted successfully."
   end
 
 

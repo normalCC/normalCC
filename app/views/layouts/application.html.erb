@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Normalcc</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Normalcc</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="animated rubberBand">Home</a>  |
+      <%= link_to "New Questions", new_question_path %>  |
+      <%= link_to "List Questions", questions_path %> |
 
-<%= yield %>
+      <!-- gem 'devise' sign-out button, only show OUT if user is signed IN first-->
+      <% if user_signed_in? %>
+        Hello <%= current_user.first_name %>,
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, method: :get %>
+      <% end %>
 
-</body>
+      <!-- flash notice and alert for gem 'devise' usage -->
+      <%#= flash[:notice] || flash[:alert] %>
+      <% flash.each do |name, msg| %>
+        <% if name=="notice" %>
+          <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
+        <% elsif name=="alert" %>
+          <%= content_tag :div, msg, class: "alert alert-warning", role: "alert" %>
+        <% elsif name=="error" %>
+          <%= content_tag :div, msg, class: "alert alert-danger", role: "alert" %>
+        <% else %>
+          <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
+        <% end %>
+      <% end %>
+
+
+      <%= yield %>
+      
+    </div>
+  </body>
 </html>

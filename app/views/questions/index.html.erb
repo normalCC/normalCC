@@ -1,0 +1,32 @@
+<h1>List all normality test questions:</h1>
+
+<% if @entire_questions.length == 0 %>
+  <em>No question found!</em>
+  Are you curious about how your behaviour or thoughts compare to others? Answer a few and ask your questions <% link_to "here", new_question_path %>. 
+<% else %>
+  <h3> a few most recent questions:</h3>
+  <ul>
+    <% @questions_recent.each do |q| %>
+      <li><%= link_to q.title, question_path(q) %></li>
+    <% end %>
+  </ul>
+
+  <hr>
+
+  <h2>all questions asked regarding normality:</h2>
+  <table width="80%" border="1">
+    <tr>
+      <th>questions:</th>
+    </tr>
+
+    <% @entire_questions.each do |q| %>
+      <tr>
+        <th>
+          <%#= link_to q.title, question_path(q) %>
+          <!-- this is the short hand with only the instance varaible -->
+          <%= link_to q.title, q %> 
+        </th>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
