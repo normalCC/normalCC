@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :questions do 
-    resources :answers
+    resources :answers #WXU???
   end
 
 #  root "welcome#index"
