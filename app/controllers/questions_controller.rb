@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:edit, :update, :show, :destroy]
+
   def new
     @question = Question.new
   end
@@ -32,7 +33,12 @@ class QuestionsController < ApplicationController
 
   def index
     @entire_questions = Question.all
-    @questions_recent = Question.recent(3)
+
+    if (Question.count >= 3)
+      @questions_recent = Question.recent(3)
+    else
+      @questions_recent = @entire_questions
+    end
   end
 
   def destroy
@@ -42,14 +48,11 @@ class QuestionsController < ApplicationController
   end
 
 
-  private 
-
+  private
     def find_question
       @question = Question.find(params[:id])
     end
-
     def question_params
       params.require(:question).permit(:title, {country_ids: []})
     end
-
 end

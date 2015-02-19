@@ -2,7 +2,7 @@
 
 <% if @entire_questions.length == 0 %>
   <em>No question found!</em>
-  Are you curious about how your behaviour or thoughts compare to others? Answer a few and ask your questions <% link_to "here", new_question_path %>. 
+  Are you curious about how your behaviour or thoughts compare to others? Answer a few and ask your questions <%= link_to "here", new_question_path %>. 
 <% else %>
   <h3> a few most recent questions:</h3>
   <ul>

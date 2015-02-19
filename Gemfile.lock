@@ -327,6 +327,7 @@ PLATFORMS
 
 DEPENDENCIES
   animate-rails
+  autoprefixer-rails
   awesome_print
   bootstrap-sass
   byebug
