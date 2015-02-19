@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  birth_year: 2015-02-18
+  female: false
+  country_id: 
+
+two:
+  email: MyString
+  birth_year: 2015-02-18
+  female: false
+  country_id: 
