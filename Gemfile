@@ -32,9 +32,47 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'thin'  #this requires the web server to be Thin, only works for Thin though
+gem 'animate-rails'  # this is for animation through CSS effects
+gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
+gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
+#gem 'autoprefixer'  # used for SASS for bootstrap
+gem 'devise'         # authentication module
+gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 
+#gem 'haml-rails'
+#gem 'slim-rails'
+#gem 'premailer' #inline styling for Emails
+
+
+gem 'delayed_job_active_record'  #for background process of blocking tasks
+gem 'delayed_job_web'         #UI for seeing the queued tasks
+
+gem 'simple_form'  #for simple_form usage
+gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
+# both below are for file attachments, carrierwave is preferred, while paperclip is easier to use/setup
+gem 'carrierwave'           #for attachment files
+gem "paperclip", "~> 4.2"   #another gem for attachment files
+gem 'mini_magick'           #??
+
+gem 'fog'  # interface with S3, google, etc, all service providers
+
+group :development do 
+  gem "colorize"
+  gem "interactive_editor"
+  gem "hirb"
+  gem "awesome_print"
+  gem "letter_opener" #to do with email client/mailer(?)
+  gem "rails-erd"  # graphical ERD tool to generate PDF
+end
 
 group :development, :test do
+#  gem "pry-rails"
+#  gem "pry-byebug"
+  gem "quiet_assets"  #rails log does not show the assets (js, css) related entries
+  gem 'faker'  #CodeCore added for homework purposes, generates a bunch of Fake information/data
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
