@@ -1,0 +1,27 @@
+<h1><%= @question.title %></h1>
+<div class="row">
+  <div class="col-md-9">
+    <p>Created on: <%= stdDate(@question.created_at) %></p>
+    <p>Created by: <%= @question.user_email %></p>
+    <p>View count: <%#= @question.view_count %></p>
+    <p>Like count: <%#= @question.likes_count %></p>
+  </div>
+  <div class="col-md-3">  <!-- use with miniMagick image attachment -->
+    <%#= image_tag @question.image_url(:medium) %>
+  </div>
+</div>
+
+<hr>
+<h2>Create an answer:</h2>
+<div class="answer-form">
+  <%= render "/answers/form" %>  <!-- refactor answer form into answer's view folder partial form -->
+</div>
+
+<h2>Answers:</h2>  <!-- loop through answers list and print them all -->
+<%#= render @quesstion.answers %>
+
+<div class="answers">
+  <% @question.answers.each do |ans| %>
+    <%= render partial: "/answers/answer", locals: { answer: ans } %>
+  <% end %>
+</div>
