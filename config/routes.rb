@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
+  resources :user #WXU???
+
   resources :questions do 
-    resources :answers #WXU???
+    resources :answers, only: [:create, :update, :destroy]
   end
 
-#  root "welcome#index"
+  root "questions#index" #WXU??? change this to User sign-in page
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
