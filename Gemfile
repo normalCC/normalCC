@@ -35,8 +35,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
 gem 'animate-rails'  # this is for animation through CSS effects
 gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
-gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
+gem 'autoprefixer-rails' # for SASS on rails
 #gem 'autoprefixer'  # used for SASS for bootstrap
+
+gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
+
 gem 'devise'         # authentication module
 gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 
