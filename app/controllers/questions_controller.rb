@@ -32,13 +32,22 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @entire_questions = Question.all
+    #@entire_questions = Question.all
+    @questions = Question.all
+    @questions = Question.search(params[:search])
+    #@questions = Question.all 
+    # Patching all Question
+    #@Question = Question.where(id: params[:id]) if params[:id].present?
+    # Find By Id (For paginating, 'where' statement result is Question ActiveRecord::Relationship )
+    @questions = @questions.search(params[:search]) if params[:search].present?
+    @questions = @questions.text_search(params[:query]) if params[:query].present?#.page(params[:page]).per_page(3)
+    # Search using Keyword
 
-    if (Question.count >= 3)
-      @questions_recent = Question.recent(3)
-    else
-      @questions_recent = @entire_questions
-    end
+    #if (Question.count >= 3)
+    #  @questions_recent = Question.recent(3)
+    #else
+    #  @questions_recent = @entire_questions
+    #end
   end
 
   def destroy

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :user #WXU???
+  resources :searches
 
   resources :questions do 
     resources :answers, only: [:create, :update, :destroy]
