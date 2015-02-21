@@ -4,11 +4,12 @@
   <h3>Answers:</h3>
   <%= f.full_error :answers %>
   <%= f.simple_fields_for :answers do |r| %>
-    <div class="row well">
-      <%= r.input :title %>
-    </div>
-    <hr>
+    <%= render partial: "answer_fields", locals: { f: r } %>
   <% end %>
+
+  <div class="links">
+    <%= link_to_add_association 'Add answers', f, :answers, class: "btn btn-info" %>
+  </div>
 
   <%= f.submit class: "btn btn-md btn-primary" %>
 <% end %>

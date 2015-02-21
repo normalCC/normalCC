@@ -5,15 +5,15 @@
     <p>Created by: <%#= @question.user_email %></p>
     <p>View count: <%#= @question.view_count %></p>
     <p>Like count: <%#= @question.likes_count %></p>
-<!--     <%# if can? :edit, @campaign %>
+    <%# if can? :edit, @campaign %>
       <%#= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-info" %>
     <%# end %>
     <%# if can? :destroy, @campaign %>
       <%#= link_to "Delete", @campaign, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-    <%# end %> -->
+    <%# end %>
   </div>
 
-  
+
   <div class="col-sm-3 col-md-3">
     <h2>Answers:</h2>
     <% @question.answers.each do |a| %>
