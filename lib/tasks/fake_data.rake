@@ -46,7 +46,7 @@ namespace :fake_data do
   end
 
 
-  desc "Create a fake question and 5 answers for the 20 created fake users."
+  desc "Create a fake question and 5 answers."
   task :create_qa => :environment do 
 
     #  create the question
@@ -60,7 +60,8 @@ namespace :fake_data do
     end
   end   
  
-desc "Create 20 fake lines scorecard, depends on above two tasks"
+############ RUN THIS TASK ##############
+desc "Create 20 fake lines in the scorecard, depends on above two tasks"
   task :create_s => [:create_20_users, :create_qa] do 
 
     20.times do |a|
@@ -70,18 +71,5 @@ desc "Create 20 fake lines scorecard, depends on above two tasks"
       Scorecard.create(user_id: the_user_id, answer_id: the_answer_id  )
     end
   end   
-
-    # end
-
-    # User.all.each do |u|
-    #   # generate random Scorecard pairings between users and questions
-    #   # 2.times do
-    #     u.scorecards.create(answer: Random.rand(4) )
-    #   # end
-    # end
-
-
-
-
 
 end
