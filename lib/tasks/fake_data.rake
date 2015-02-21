@@ -47,22 +47,29 @@ namespace :fake_data do
 
 
   desc "Create a fake question and 5 answers for the 20 created fake users."
-  task :create_20_uqa => :create_20_users do 
+  task :create_qa => :environment do 
 
     #  create the question
-    question = Question.create(title: "What time do you go to bed?" )
+    question = Question.create(title: "What time do you go to bed?", user_id: User.first.id )
 
     # create answers 
     possible_answers = ["7pm", "9pm", "11pm", "1am", "3am"]
 
-    20.times do |a|
-      Answer.create(title: possible_answers[a-1], question_id: question.id)
-      the_user_id = User.first.id + a
-      # puts first_user_id + a
-      Scorecard.create(user_id: the_user_id, answer_id: Random.rand(possible_answers.length) +1  )
+    5.times do |a|
+      Answer.create(title: possible_answers[a-1], question_id: Question.first.id)
     end
   end   
-   
+ 
+desc "Create 20 fake lines scorecard, depends on above two tasks"
+  task :create_s => [:create_20_users, :create_qa] do 
+
+    20.times do |a|
+      the_user_id = User.first.id + a
+      the_answer_id = Answer.first.id + Random.rand(5)   # only allows answer_ids within the first 5 answers
+      # puts first_user_id + a
+      Scorecard.create(user_id: the_user_id, answer_id: the_answer_id  )
+    end
+  end   
 
     # end
 
