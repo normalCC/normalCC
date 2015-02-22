@@ -29,4 +29,13 @@ class Question < ActiveRecord::Base
     end
   end
 
+  # constructs a 2D array of data points to create the graph of results
+  def graph_data   
+    data_points =[]  # this will have [answer.title, answer.count]
+    self.answers.each do |a|
+      data_points.push([ a.title, Scorecard.where(answer_id: a.id).count  ])  # a.id removed
+    end
+    return data_points
+  end
+
 end

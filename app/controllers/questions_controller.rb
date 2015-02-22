@@ -28,7 +28,9 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    #find_question
+    find_question
+    # find all the data for this question, to generate graph
+    # @rawData2 =  @question.graph_data
   end
 
   def index
