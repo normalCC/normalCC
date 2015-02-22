@@ -3,11 +3,10 @@
     <h1><%= @question.title %></h1>
     <p>Created on: <%= stdDate(@question.created_at) %></p>
 
-=begin
-     <p>Created by: <%#= @question.user_email %></p>
+<!-- <p>Created by: <%#= @question.user_email %></p>
     <p>View count: <%#= @question.view_count %></p>
     <p>Like count: <%#= @question.likes_count %></p>
-=end
+-->
 
 <!--     <%# if can? :edit, @campaign %>
       <%#= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-info" %>
@@ -30,6 +29,6 @@
 
   </div>
 
-  <%= render "graph" %>
-
 </div>
+
+<%= render "graph" %>
