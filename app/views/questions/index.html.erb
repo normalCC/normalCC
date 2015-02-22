@@ -1,7 +1,7 @@
 <h1>List all normality test questions:</h1>
 
-<% @questions.each do |f| %>
-  <br>
-  <%= link_to f.title, f %>
-<% end %>
-
+<ul>
+  <% @questions.each do |f| %>
+    <li><%= link_to f.title, f %></li>
+  <% end %>
+</ul>

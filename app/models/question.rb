@@ -1,6 +1,13 @@
 class Question < ActiveRecord::Base
   belongs_to :user
+
+  # Question has many Answers, which is also a nested attribute on Q.
   has_many :answers, dependent: :destroy
+  accepts_nested_attributes_for :answers,
+                            reject_if: lambda { |x|
+                            x[:title].blank? }, allow_destroy: true
+  validates :answers, presence: true
+
 
   validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
 

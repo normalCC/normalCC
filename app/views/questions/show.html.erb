@@ -1,16 +1,34 @@
-<h1><%= @question.title %></h1>
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-sm-9 col-md-9">
+    <h1><%= @question.title %></h1>
     <p>Created on: <%= stdDate(@question.created_at) %></p>
-<!--     <p>Created by: <%#= @question.user_email %></p>
+
+<!-- <p>Created by: <%#= @question.user_email %></p>
     <p>View count: <%#= @question.view_count %></p>
-    <p>Like count: <%#= @question.likes_count %></p> -->
+    <p>Like count: <%#= @question.likes_count %></p>
+-->
+
+<!--     <%# if can? :edit, @campaign %>
+      <%#= link_to "Edit", edit_campaign_path(@campaign), class: "btn btn-info" %>
+    <%# end %>
+    <%# if can? :destroy, @campaign %>
+      <%#= link_to "Delete", @campaign, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+
+    <%# end %> -->
 
   </div>
-  <div class="col-md-3">  <!-- use with miniMagick image attachment -->
-    <%#= image_tag @question.image_url(:medium) %>
-  </div>
 
-  <%= render "graph" %>
+
+  <div class="col-sm-3 col-md-3">
+    <h2>Answers:</h2>
+    <% @question.answers.each do |a| %>
+      <div class="well">
+        <h3><%= a.title %></h3>
+      </div>
+    <% end %>
+
+  </div>
 
 </div>
+
+<%= render "graph" %>

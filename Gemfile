@@ -61,6 +61,13 @@ gem 'mini_magick'           #??
 
 gem 'fog'  # interface with S3, google, etc, all service providers
 
+gem 'geocoder'
+gem 'gmaps4rails'
+gem "underscore-rails"
+
+gem "cocoon"  #use for nested attributes
+
+
 group :development do 
   gem "colorize"
   gem "interactive_editor"
@@ -73,7 +80,8 @@ end
 group :development, :test do
 #  gem "pry-rails"
 #  gem "pry-byebug"
-  gem "quiet_assets"  #rails log does not show the assets (js, css) related entries
+  gem "quiet_assets" #rails log does not show the assets (js, css) related entries
+ 
   gem 'faker'  #CodeCore added for homework purposes, generates a bunch of Fake information/data
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -84,5 +92,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #
 end
 
