@@ -9,13 +9,29 @@ class User < ActiveRecord::Base
   has_many :scorecards, dependent: :destroy
   has_many :answers, through: :scorecards
 
-  #validates :birth_year, :female, :country, presence: true
-  #validates :country, presence: true
-  #validates :female, presence: true, inclusion: { in: [true, false] }
-  validates :birth_year, presence: true, numericality: true
-  validate :valid_birth_year #validates the field for birth_year, 1910 - 2015, shorter range?
+#  validates :birth_year, :female, presence: true
+#  validates :female, presence: true, inclusion: { in: [true, false] }
+#  validates :birth_year, presence: true, numericality: true
+  #validates :country, presence: true  #do not turn this on in case of perform_reverse_geocode returns "nil" for country
+  validate :valid_birth_year #custom validate birth_year, 1910 - 2015, shorter range?
+  
+  attr_accessor :address
   geocoded_by :ip_address
   after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :perform_reverse_geocode  # auto-fetch address
+
+  def perform_reverse_geocode
+    reverse_geocode
+    # Rails.logger.info ">>>>>>>>>>> #{address}"
+
+    if address != nil
+      country = Country.find_by_name address.split(",").last.strip
+      self.country = country
+    else
+      self.country = nil  #just in weird cases or errors, if the address/coountry cannot be found properly
+    end
+  end
 
   validates :name, presence: true, length: {minimum: 5, maximum: 30}
 
