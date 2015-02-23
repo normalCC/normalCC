@@ -1,0 +1,8 @@
+<h1>Sign Up</h1>
+    
+<%= form_for(@user) do |f| %>
+<%= render 'fields', f: f %>
+<br>
+<%= f.submit "Create My Account", class: "form-control btn btn-info" %>
+<% end %>
+  

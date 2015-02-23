@@ -1,0 +1,18 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_for(:session, url: login_path) do |f| %>
+
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-control' %>
+
+<%= f.label :password %>
+<%#= link_to "(forgot password)", new_password_reset_path %>
+<%= f.password_field :password, class: 'form-control' %>
+
+<%#= f.label :remember_me, class: 'checkbox inline' do %>
+<%#= f.check_box :remember_me %>
+<%# end %>
+
+<%= f.submit "Log in", class: "btn btn-primary" %>
+<% end %>
+<p>New User? <%= link_to "Sign up now!", signup_path %></p>
