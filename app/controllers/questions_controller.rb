@@ -12,12 +12,16 @@ class QuestionsController < ApplicationController
       redirect_to @question, notice: "Question created successfully."
     else
       3.times { @question.answers.build }
+      flash[:alert] = "Question FAILED to create."
       render :new
     end
   end
 
   def edit
     #find_question
+
+    remaining = 3 - @question.answers.count
+    remaining.times { @question.answers.build }
   end
 
   def update
@@ -25,6 +29,7 @@ class QuestionsController < ApplicationController
     if @question.update question_params
       redirect_to @question, notice: "Question updated successfully."
     else
+      flash[:alert] = "Campaign FAILED to update"
       render :edit
     end
   end
@@ -69,6 +74,6 @@ class QuestionsController < ApplicationController
       params.require(:question).permit( :title, 
                                         {country_ids: []},
                                         {answers_attributes: 
-                                          [ :title ] } )
+                                          [ :id, :title, :_destroy ] } )
     end
 end
