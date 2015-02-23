@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    3.times { @question.answers.build }
   end
 
   def create
@@ -10,6 +11,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to @question, notice: "Question created successfully."
     else
+      3.times { @question.answers.build }
       render :new
     end
   end
@@ -64,6 +66,9 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
     def question_params
-      params.require(:question).permit(:title, {country_ids: []})
+      params.require(:question).permit( :title, 
+                                        {country_ids: []},
+                                        {answers_attributes: 
+                                          [ :title ] } )
     end
 end
