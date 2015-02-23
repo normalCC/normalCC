@@ -12,12 +12,14 @@ namespace :fake_data do
 
     # generate 3 users
     3.times do |n|
-      User.create(email: "sample#{Random.rand(10000000)}@email.com", female: [true, false].sample, 
+      User.create(email: "sample#{Random.rand(100)}@email.com", female: [true, false].sample, 
         birth_year: all_years.sample) # country: Country.all.sample
     end
 
-    5.times do
-      Question.create(title: Faker::Lorem.sentence(2) )
+    User.all.each do |u|
+      2.times do
+        u.questions.create(title: Faker::Company.bs) #, user_id: User.all.sample.id )
+      end
     end
 
     Question.all.each do |quest|
