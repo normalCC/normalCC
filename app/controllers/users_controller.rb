@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
- 
-before_action :logged_in_user, only: [:home, :index, :destroy] #:home? #:edit, :update,
-#before_action :correct_user, only: [:edit, :update]
-before_action :admin_user, only: :destroy #:home, :index?
+  before_action :logged_in_user, only: [:home, :index, :destroy] #:home? #:edit, :update,
+  #before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy #:home, :index?
 
   def new
      @user = User.new 
@@ -26,6 +25,9 @@ before_action :admin_user, only: :destroy #:home, :index?
 
   def create
     @user = User.new(user_params)
+    # get user's current IP address, this will get translated into latitude and longitude after_validation via User Model. 
+    @user.ip_address = request.remote_ip
+
     if @user.save
       log_in @user
       flash[:success] = "LOGGED IN "
@@ -78,4 +80,5 @@ before_action :admin_user, only: :destroy #:home, :index?
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
+
 end

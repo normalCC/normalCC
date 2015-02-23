@@ -1,19 +1,16 @@
 <h1>List all normality test questions:</h1>
 
-<% @questions.each do |f| %>
-  <br>
-  <%= f.title %>
+<ul>
+  <% @questions.each do |f| %>
+    <li><%= link_to f.title, f %></li>
   <% end %>
-<br>
-<br>
-
-<br>
-
-<br>
+</ul>
 
 Temporary Geocoding test display (before User's view files are pushed in):
-<% test_user = User.first %>
+<%# test_user = User.first %>
+<% test_user = current_user %>
 test_user lat: <%= test_user.latitude %> lon: <%= test_user.longitude %>
+
 <% location = request.location %>
 
 location's country_code: <%= location.data["country_code"] %> and country_name: <%= location.data["country_name"] %>
@@ -39,10 +36,3 @@ location's country_code: <%= location.data["country_code"] %> and country_name: 
     });
   });
 </script>
-<hr>
-
-<ul>
-  <% @questions.each do |f| %>
-    <li><%= link_to f.title, f %></li>
-  <% end %>
-</ul>
