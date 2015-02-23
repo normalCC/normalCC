@@ -4,3 +4,14 @@
 #chart_div {
   display: inline-block;
 }
+
+.image_holder {
+  position: relative;
+}
+
+.image_big {
+  position:absolute;
+  width:100%;
+  max-width: 100%;
+  z-index:-1;
+}

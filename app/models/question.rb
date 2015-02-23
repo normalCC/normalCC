@@ -33,7 +33,7 @@ class Question < ActiveRecord::Base
   def graph_data   
     data_points =[]  # this will have [answer.title, answer.count]
     self.answers.each do |a|
-      data_points.push([ a.title, Scorecard.where(answer_id: a.id).count  ])  # a.id removed
+      data_points.push([ a.id, Scorecard.where(answer_id: a.id).count, a.title ])  # a.id removed
     end
     return data_points
   end
