@@ -11,4 +11,39 @@
 
 <br>
 
+=======
+Temporary Geocoding test display (before User's view files are pushed in):
+<% test_user = User.first %>
+test_user lat: <%= test_user.latitude %> lon: <%= test_user.longitude %>
+<% location = request.location %>
 
+location's country_code: <%= location.data["country_code"] %> and country_name: <%= location.data["country_name"] %>
+
+<hr>
+<div id="map" style="height: 400px"></div>
+
+
+<script>
+  $(document).ready(function(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+        {
+          "lat": <%= test_user.latitude %>,
+          "lng": <%= test_user.longitude %>,
+          "infowindow": "<%= test_user.email %>"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(12);  <!-- sets the zoom level on the map -->
+    });
+  });
+</script>
+<hr>
+
+<ul>
+  <% @questions.each do |f| %>
+    <li><%= link_to f.title, f %></li>
+  <% end %>
+</ul>

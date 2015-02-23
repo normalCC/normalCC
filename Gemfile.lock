@@ -41,7 +41,7 @@ GEM
     animate-rails (1.0.7)
       rails
     arel (6.0.0)
-    autoprefixer-rails (5.1.5)
+    autoprefixer-rails (5.1.7)
       execjs
       json
     awesome_print (1.6.1)
@@ -67,13 +67,14 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
+    cocoon (1.2.6)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.0)
+    coffee-script-source (1.9.1)
     colorize (0.7.5)
     columnize (0.9.0)
     daemons (1.1.9)
@@ -96,7 +97,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    eventmachine (1.0.4)
+    eventmachine (1.0.7)
     excon (0.44.2)
     execjs (2.3.0)
     faker (1.4.3)
@@ -104,7 +105,7 @@ GEM
     ffi (1.9.6)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.27.0)
+    fog (1.28.0)
       fog-atmos
       fog-aws (~> 0.0)
       fog-brightbox (~> 0.4)
@@ -113,6 +114,7 @@ GEM
       fog-json
       fog-profitbricks
       fog-radosgw (>= 0.0.2)
+      fog-riakcs
       fog-sakuracloud (>= 0.0.4)
       fog-serverlove
       fog-softlayer
@@ -135,7 +137,7 @@ GEM
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.28.0)
+    fog-core (1.29.0)
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -155,6 +157,10 @@ GEM
       fog-core (>= 1.21.0)
       fog-json
       fog-xml (>= 0.0.1)
+    fog-riakcs (0.1.0)
+      fog-core
+      fog-json
+      fog-xml
     fog-sakuracloud (1.0.0)
       fog-core
       fog-json
@@ -182,8 +188,10 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.2.7)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     hike (1.2.3)
     hirb (0.7.3)
     i18n (0.7.0)
@@ -191,7 +199,7 @@ GEM
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
     ipaddress (0.8.0)
-    jbuilder (2.2.7)
+    jbuilder (2.2.8)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.3)
@@ -314,6 +322,7 @@ GEM
     uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.7.0)
     warden (1.2.3)
       rack (>= 1.0)
     web-console (2.0.0)
@@ -334,6 +343,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 1.10)
   carrierwave
+  cocoon
   coffee-rails (~> 4.1.0)
   colorize
   delayed_job_active_record
@@ -342,6 +352,8 @@ DEPENDENCIES
   faker
   fog
   friendly_id (~> 5.1.0)
+  geocoder
+  gmaps4rails
   hirb
   interactive_editor
   jbuilder (~> 2.0)
@@ -361,4 +373,5 @@ DEPENDENCIES
   thin
   turbolinks
   uglifier (>= 1.3.0)
+  underscore-rails
   web-console (~> 2.0)

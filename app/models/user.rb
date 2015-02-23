@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   #validates :female, presence: true, inclusion: { in: [true, false] }
   validates :birth_year, presence: true, numericality: true
   validate :valid_birth_year #validates the field for birth_year, 1910 - 2015, shorter range?
+  geocoded_by :ip_address
+  after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
 
   validates :name, presence: true, length: {minimum: 5, maximum: 30}
 

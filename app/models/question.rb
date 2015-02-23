@@ -1,9 +1,19 @@
 class Question < ActiveRecord::Base
   belongs_to :user
+
+  # Question has many Answers, which is also a nested attribute on Q.
   has_many :answers, dependent: :destroy
+  accepts_nested_attributes_for :answers,
+                            reject_if: lambda { |x|
+                            x[:title].blank? }, allow_destroy: true
+#  validates :answers, presence: true
 
   #validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   validates :title, presence: true, allow_blank: false, uniqueness: {case_sensitive: false}
+
+# need to temp disable :title and :answers validation for Rake Task to run properly.
+#  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
+
   before_save :cap_title
   #validates :title, presence: true, length: {minimum: 5, maximum: 30}
   scope :where_title, lambda { |term| where("questions.title iLIKE ?", "%#{term}%") }
@@ -54,6 +64,15 @@ class Question < ActiveRecord::Base
     else
       render 'new'
     end
+  end
+
+  # constructs a 2D array of data points to create the graph of results
+  def graph_data   
+    data_points =[]  # this will have [answer.title, answer.count]
+    self.answers.each do |a|
+      data_points.push([ a.title, Scorecard.where(answer_id: a.id).count  ])  # a.id removed
+    end
+    return data_points
   end
 
 end

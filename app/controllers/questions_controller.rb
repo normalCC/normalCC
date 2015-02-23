@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    3.times { @question.answers.build }
   end
 
   def create
@@ -10,12 +11,17 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to @question, notice: "Question created successfully."
     else
+      3.times { @question.answers.build }
+      flash[:alert] = "Question FAILED to create."
       render :new
     end
   end
 
   def edit
     #find_question
+
+    remaining = 3 - @question.answers.count
+    remaining.times { @question.answers.build }
   end
 
   def update
@@ -23,12 +29,15 @@ class QuestionsController < ApplicationController
     if @question.update question_params
       redirect_to @question, notice: "Question updated successfully."
     else
+      flash[:alert] = "Campaign FAILED to update"
       render :edit
     end
   end
 
   def show
-    #find_question
+    find_question
+    # find all the data for this question, to generate graph
+    # @rawData2 =  @question.graph_data
   end
 
   def index
@@ -62,6 +71,9 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
     def question_params
-      params.require(:question).permit(:title, {country_ids: []})
+      params.require(:question).permit( :title, 
+                                        {country_ids: []},
+                                        {answers_attributes: 
+                                          [ :id, :title, :_destroy ] } )
     end
 end
