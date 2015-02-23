@@ -338,6 +338,7 @@ DEPENDENCIES
   animate-rails
   autoprefixer-rails
   awesome_print
+  bcrypt
   bootstrap-sass
   byebug
   cancancan (~> 1.10)

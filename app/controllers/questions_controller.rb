@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
   def index
     #@entire_questions = Question.all
     @questions = Question.all
-    @questions = Question.search(params[:search])
+    #@questions = Question.search(params[:search])
     #@questions = Question.all 
     # Patching all Question
     #@Question = Question.where(id: params[:id]) if params[:id].present?
