@@ -5,7 +5,13 @@ class User < ActiveRecord::Base
   has_many :scorecards, dependent: :destroy
   has_many :answers, through: :scorecards
 
-  validates :email, :birth_year, :country, presence: true
+  geocoded_by :ip_address
+  after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
+
+
+
+  validates :email, :birth_year, presence: true
+  #validates :country, presence: true
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 

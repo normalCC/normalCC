@@ -6,10 +6,10 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers,
                             reject_if: lambda { |x|
                             x[:title].blank? }, allow_destroy: true
-  validates :answers, presence: true
+#  validates :answers, presence: true
 
-
-  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
+# need to temp disable :title and :answers validation for Rake Task to run properly.
+#  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
 
   before_save :cap_title
 
