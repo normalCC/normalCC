@@ -5,6 +5,7 @@
  <% if current_user.admin? && !current_user?(user) %> 
   | <%= link_to "delete", user, method: :delete,
         data: { confirm: "Are you sure?" } %>
+        <% end %>
 
 <%= link_to user.name, user %>, <br>
 EMAIL: <%= user.email %>, <br>
@@ -17,5 +18,4 @@ CREATED AT: <%= user.created_at %>, <br>
 DIGEST: <%= user.password_digest %>.
 <br>
 <hr>
-<% end %>
 <% end %>

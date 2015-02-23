@@ -40,7 +40,7 @@ gem 'autoprefixer-rails' # for SASS on rails
 
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 
-gem 'devise'         # authentication module
+#gem 'devise'         # authentication module
 gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 
 #gem 'haml-rails'
