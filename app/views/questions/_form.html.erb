@@ -3,13 +3,14 @@
 
   <h3>Answers:</h3>
   <%= f.full_error :answers %>
-  <%= f.simple_fields_for :answers do |r| %>
-    <%= render partial: "answer_fields", locals: { f: r } %>
+  <%= f.simple_fields_for :answers do |ans| %>
+    <%= render "answer_fields", f: ans %>
   <% end %>
 
+
   <div class="links">
-    <%= link_to_add_association 'Add answers', f, :answers, class: "btn btn-info" %>
+    <%= link_to_add_association 'Add answers', f, :answers, class: "btn btn-primary" %>
   </div>
 
-  <%= f.submit class: "btn btn-md btn-primary" %>
+  <%= f.submit %>
 <% end %>

@@ -30,3 +30,21 @@
     <% end %>
   </table>
 <% end %>
+
+      words.split(" ").each do |word|
+        query += "OR "
+        questions = questions.where("title ILIKE ?", word)
+      end
+
+
+       questions = Question.where("")
+      query     = ""
+      keywords   = {}
+      words.split(" ").each do |word|
+        query += "OR "
+        questions = questions.where("title ILIKE ?", word)
+      end
+      questions = Question.where("title like ? OR title ILIKE ?", "%#{keywords}%", "%#{title}%") if keywords.present?
+      questions = Question.where("title iLIKE ?", "%#{title}%") if title.present?
+      #questions
+    end

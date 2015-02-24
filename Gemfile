@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'bcrypt'
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
 gem 'animate-rails'  # this is for animation through CSS effects
 gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
