@@ -24,23 +24,22 @@
             <%= link_to 'Log Out', logout_path, method: 'delete' %>
           </div>
         </div>
+      <% else %>
+        <%= link_to 'Sign up', new_user_path  %> |
+        <%= link_to 'Log In', login_path %> 
+      <% end %>
 
         <% flash.each do |name, msg| %>
           <% if name=="notice" %>
             <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
           <% elsif name=="alert" %>
             <%= content_tag :div, msg, class: "alert alert-warning", role: "alert" %>
-          <% elsif name=="error" %>
+          <% elsif name=="danger" %>
             <%= content_tag :div, msg, class: "alert alert-danger", role: "alert" %>
           <% else %>
             <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
           <% end %>
         <% end %>
-
-      <% else %>
-        <%= link_to 'Sign up', new_user_path  %> |
-        <%= link_to 'Log In', login_path %> 
-      <% end %>
 
       <%= yield %>
       

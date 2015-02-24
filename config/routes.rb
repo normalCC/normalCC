@@ -3,14 +3,13 @@ Rails.application.routes.draw do
   
   get 'sessions/new'
 
-  resources :users #WXU???
+  resources :users
   resources :searches
 
   resources :questions do 
     resources :answers, only: [:create, :update, :destroy]
   end
 
-  root "users#index" #WXU??? change this to User sign-in page
   get    'home'    =>  'users#home'
   get    'data'    =>  'questions#index'
   get    'signup'  =>  'users#new'
@@ -18,6 +17,9 @@ Rails.application.routes.draw do
   get    'login'   =>  'sessions#new'
   post   'login'   =>  'sessions#create'
   delete 'logout'  =>  'sessions#destroy'
+
+  root "users#index" #WXU??? change this to User sign-in page
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

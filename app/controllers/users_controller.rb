@@ -25,8 +25,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # get user's current IP address, this will get translated into latitude and longitude after_validation via User Model. 
-    @user.ip_address = request.remote_ip
+    if @user != nil
+      # get user's current IP address, this will get translated into latitude and longitude after_validation via User Model. 
+      # @user.ip_address = request.remote_ip            # BUG WITH THIS LINE
+    else
+      flash[:alert] = "@user is nil"
+      redirect_to root_path
+    end    
 
     if @user.save
       log_in @user
