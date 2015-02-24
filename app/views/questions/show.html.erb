@@ -5,6 +5,15 @@
 
 <!-- <p>Created by: <%#= @question.user_email %></p>
     <p>View count: <%#= @question.view_count %></p>
+
+    <p>Like count: <%#= @question.likes_count %></p> -->
+    <div class='image_holder'>
+      <img src="/sample_background_1.jpg" class='image_big' alt="">
+    </div>
+  </div>
+  <div class="col-md-3">  <!-- use with miniMagick image attachment -->
+    <%#= image_tag @question.image_url(:medium) %>
+
     <p>Like count: <%#= @question.likes_count %></p>
 -->
 
@@ -25,9 +34,9 @@
         <h3><%= a.title %></h3>
       </div>
     <% end %>
-
   </div>
+<%= render "graph" %>
+
 
 </div>
 
-<%= render "graph" %>

@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # render text: session[:forwarding_url]
     user = User.find_by(email: params[:session][:email].downcase)
       if user && user.authenticate(params[:session][:password])
       #login the user and redirect to the show page
@@ -14,9 +15,10 @@ class SessionsController < ApplicationController
         redirect_back_or user
       else
       #create error
-        flash.now[:danger] = "Invalid email or password" #.now removes persistant falsh message
+        flash.now[:danger] = "Invalid email or password" #.now removes persistant flash message
         render 'new'
-      end
+    end
+  
   end
 
   def destroy

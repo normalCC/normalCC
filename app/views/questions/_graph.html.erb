@@ -1,4 +1,5 @@
-
+<!-- This is the code for producing a graph with Google's Chart API. 
+Note: I have used the "classic chart", not their "material design" version.  -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
   google.load('visualization', '1.1', {packages: ['corechart']});
@@ -8,51 +9,54 @@
     // var data = google.visualization.arrayToDataTable(<%= raw @question.graph_data %>); 
     var data = new google.visualization.DataTable();
 
-    data.addColumn('string', "answer_number");
+    data.addColumn('number', "answer_number");
     data.addColumn('number', 'answer_count');
-    // data.addColumn({type:'string', role:'annotation'});
+    data.addColumn({type:'string', role:'annotation'});
 
     // raw has to be here to allow the quotes
     data.addRows(<%= raw @question.graph_data %>);  
 
-    // var view = new google.visualization.DataView(data);
-    // view.setColumns([0, 1, 2, {
-    //                         calc: "stringify",
-    //                         sourceColumn: 2,
-    //                         type: "string",
-    //                         role: "annotation"
-    //                     }]);
-
     var options = {
-      // annotations: {
-      //     alwaysOutside: true,
-      //     textStyle: {
-      //       fontSize: 16,
-      //       color: '#000',
-      //       auraColor: 'none'
-      //     },
-      // },
+      annotations: {
+          // alwaysOutside: true,
+          textStyle: {
+            fontSize: 18,
+            color: '#000',
+            auraColor: 'none'
+          },
+      },
       chart: {
         title: '<%= @question.title %>',
         subtitle: 'If we want a subtitle it goes here',
       },
-      // trendlines: { 1: {} }    // Draw a trendline for data series 0.
-      hAxis: {title: '<%= @question.title %>'},
-      vAxis: {title: 'weirdness', gridlines: {color: 'transparent'},textPosition: 'none' },
+      trendlines: {
+        // 0: {type: 'linear', lineWidth: 5, opacity: .3}
+        0: {type: 'polynomial', degree: 6, lineWidth: 30, opacity: .3}
+      },      
+      hAxis: { gridlines: {color: 'transparent'}, textPosition: 'none'},
+      vAxis: {title: 'normalness', gridlines: {color: 'transparent'}, textPosition: 'none', 
+        titleTextStyle: {
+            fontName: 'Arial',
+            fontSize: 36,
+            color: '#053061',
+            bold: true,
+            italic: false
+          } },
       baselineColor: 'transparent',
       width: 800,
       height: 500, 
-      // bar: {groupWidth: "50%"},
-      // chartArea: {backgroundColor: "orange"}, 
+      bar: {groupWidth: "90%"},
+      backgroundColor: "transparent",
       // animation: { duration: 1000},  // doesn't seem to do anything exciting...
       legend: { position: 'none' }
     };
 
-    // var chart = new google.charts.Bar(document.getElementById('columnchart'));
-    // chart.draw(data, google.charts.Bar.convertOptions(options));
     var chart = new google.visualization.ColumnChart(document.getElementById("columnchart"));
     chart.draw(data, options);
 
+    // Below is for using Material Design Google charts
+    // var chart = new google.charts.Bar(document.getElementById('columnchart'));
+    // chart.draw(data, google.charts.Bar.convertOptions(options));
   }
 </script>
 

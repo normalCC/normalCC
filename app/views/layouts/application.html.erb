@@ -11,32 +11,36 @@
   </head>
   
   <body>
-    <% if logged_in? %>
     <div class="container">
-      <a href="/" class="animated rubberBand">Home</a>  |
-      <%= link_to "New Questions", new_question_path %>  |
-      <%= link_to "List Questions", questions_path %> |
-      <%= link_to 'User index', home_path %> | 
-      <%= link_to 'Database', data_path %> |
-      <%= link_to 'Profile', current_user %> |
-      <%= link_to 'Log Out', logout_path, method: 'delete' %>
-
-
-      <% flash.each do |name, msg| %>
-        <% if name=="notice" %>
-          <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
-        <% elsif name=="alert" %>
-          <%= content_tag :div, msg, class: "alert alert-warning", role: "alert" %>
-        <% elsif name=="error" %>
-          <%= content_tag :div, msg, class: "alert alert-danger", role: "alert" %>
-        <% else %>
-          <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
-        <% end %>
-      <% end %>
+      <% if logged_in? %>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a href="/" class="animated rubberBand">Home</a>  |
+            <%= link_to "New Questions", new_question_path %>  |
+            <%= link_to "List Questions", questions_path %> |
+            <%= link_to 'User index', home_path %> | 
+            <%= link_to 'Database', data_path %> |
+            <%= link_to 'Profile', current_user %> |
+            <%= link_to 'Log Out', logout_path, method: 'delete' %>
+          </div>
+        </div>
       <% else %>
-      <%= link_to 'Sign up', new_user_path  %> |
-      <%= link_to 'Log In', login_path %> 
+        <%= link_to 'Sign up', new_user_path  %> |
+        <%= link_to 'Log In', login_path %> 
       <% end %>
+
+        <% flash.each do |name, msg| %>
+          <% if name=="notice" %>
+            <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
+          <% elsif name=="alert" %>
+            <%= content_tag :div, msg, class: "alert alert-warning", role: "alert" %>
+          <% elsif name=="danger" %>
+            <%= content_tag :div, msg, class: "alert alert-danger", role: "alert" %>
+          <% else %>
+            <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
+          <% end %>
+        <% end %>
+
       <%= yield %>
       
     </div>
