@@ -1,5 +1,11 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Welcoem to the home page please sign up or login</h1>
+
+
+New user?<%= link_to 'Sign up', new_user_path, class: "btn btn-lg btn-primary"  %>
+<br>
+
+<br>
+
 <%= form_for(:session, url: login_path) do |f| %>
 
 <%= f.label :email %>
@@ -12,7 +18,8 @@
 <%#= f.label :remember_me, class: 'checkbox inline' do %>
 <%#= f.check_box :remember_me %>
 <%# end %>
-
+<br>
 <%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>
+<br>
 <p>New User? <%= link_to "Sign up now!", signup_path %></p>

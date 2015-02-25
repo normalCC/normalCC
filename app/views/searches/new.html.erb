@@ -2,16 +2,17 @@
 
 <%= form_for @search do |f| %>
   <div class="field">
-    <%= f.label :keywords %>
+    <br> Use
+    <%= f.label :keyword %>
     <%= f.text_field :keywords %>
-    <br>
-    <%= f.label :title %>
+    <br> And
+    <%= f.label :keyword %>
     <%= f.text_field :title %>
-    <br>
-    <%= f.label :name %>
+    <br> And
+    <%= f.label :keyword %>
     <%= f.text_field :name %>
-    <br>
-    <%= f.label :part %>
+    <br> Not 
+    <%= f.label :keyword %>
     <%= f.text_field :part %>
   </div>
 

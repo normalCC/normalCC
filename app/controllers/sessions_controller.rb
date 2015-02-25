@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
       #login the user and redirect to the show page
         log_in user
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         remember user
       #params[:session][:remember_me] == '1' ? rememeber(user) : forget(user)
       #If we want the remember me button option.

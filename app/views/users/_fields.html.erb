@@ -15,9 +15,8 @@
 <br>
 <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "confirm password" %>
 <h4>Ladies? 
-  <%= f.radio_button :female, collection: [ ['Female', true], ['Male', false]] %>
+  <%= f.check_box :female, collection: [ ['Female', true], ['Male', false]] %>
 <%#= f.select(:female) %></h4>
 <%#= f.select_tag(:female, options_for_select(female:, male:)) %>
-<h4>Gents?
-<%= f.check_box :male %></h4>
+<%#= f.check_box :male %></h4>
 <br>

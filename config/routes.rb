@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   
+  get 'admin_users/index'
+
+  get 'admin_users/new'
+
   get 'sessions/new'
 
   resources :users #WXU???
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
   get    'login'   =>  'sessions#new'
   post   'login'   =>  'sessions#create'
   delete 'logout'  =>  'sessions#destroy'
+
+  patch "/make_admin/:id" => "users#make_admin", as: :make_admin
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

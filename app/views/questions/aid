@@ -48,3 +48,28 @@
       questions = Question.where("title iLIKE ?", "%#{title}%") if title.present?
       #questions
     end
+
+
+
+<% if @question.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      This form contains <%= pluralize(@question.errors.count, "error") %>. Please correct the following:
+    </div>
+    <ul>
+      <% @question.errors.full_messages.each do |question_err_msg| %>
+        <li><%= question_err_msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+      <% flash.each do |name, msg| %>
+        <% if name=="notice" %>
+          <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
+        <% elsif name=="alert" %>
+          <%= content_tag :div, msg, class: "alert alert-warning", role: "alert" %>
+        <% elsif name=="error" %>
+          <%= content_tag :div, msg, class: "alert alert-danger", role: "alert" %>
+        <% else %>
+          <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
+        <% end %>

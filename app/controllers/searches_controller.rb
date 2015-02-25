@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-
+  before_action :logged_in_user
   def new 
     @search = Search.new
   end

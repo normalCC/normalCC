@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
 
   #validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   validates :title, presence: true, allow_blank: false, uniqueness: {case_sensitive: false}
-
+  validate :stop_words
 # need to temp disable :title and :answers validation for Rake Task to run properly.
 #  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
 

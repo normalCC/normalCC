@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   before_save   :downcase_email
   before_create :create_activation_digest
   before_save :birth_year_to_i
- 
+  FORBIDDEN_USERNAMES = ['shit','fuck','ass', 'piss', 'cunt', 'cock']
+
   has_many :questions, dependent: :nullify
   has_many :scorecards, dependent: :destroy
   has_many :answers, through: :scorecards
@@ -97,4 +98,11 @@ class User < ActiveRecord::Base
       def birth_year_to_i
         self.birth_year.to_i
       end
+
+      def username_is_allowed
+        if FORBIDDEN_USERNAMES.include?(username)
+          errors.add(:username, "has been restricted from use.")
+        end
+      end
+      
 end

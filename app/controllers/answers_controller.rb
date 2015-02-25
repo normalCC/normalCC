@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   before_action :find_answer, only: [:update, :destroy]
   before_action :find_question, only: [:update, :destroy]
-
+  before_action :logged_in_user
   def create
     @answer = Answer.new answer_params
     if @answer.save

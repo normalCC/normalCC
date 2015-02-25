@@ -1,6 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:edit, :update, :show, :destroy]
-
+  #before_action :admin_user, only: [:index]
+  before_action :logged_in_user
+  before_action :admin_user, only: [:index]
+  
   def new
     @question = Question.new
     3.times { @question.answers.build }
