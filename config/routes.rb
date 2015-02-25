@@ -7,14 +7,13 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  resources :users #WXU???
+  resources :users
   resources :searches
 
   resources :questions do 
     resources :answers, only: [:create, :update, :destroy]
   end
 
-  root "users#index" #WXU??? change this to User sign-in page
   get    'home'    =>  'users#home'
   get    'data'    =>  'questions#index'
   get    'signup'  =>  'users#new'
@@ -23,7 +22,11 @@ Rails.application.routes.draw do
   post   'login'   =>  'sessions#create'
   delete 'logout'  =>  'sessions#destroy'
 
+
   patch "/make_admin/:id" => "users#make_admin", as: :make_admin
+
+  root "users#index" #WXU??? change this to User sign-in page
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

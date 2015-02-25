@@ -1,4 +1,4 @@
-<% if @user.errors.any? %>
+<% if @user != nil && @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
       This form contains <%= pluralize(@user.errors.count, "error") %> Please correct the following:
@@ -12,3 +12,17 @@
     </div>
 <%# end %>
 <% end %>
+
+<% if @question != nil && @question.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      This form contains <%= pluralize(@question.errors.count, "error") %>. Please correct the following:
+    </div>
+    <ul>
+      <% @question.errors.full_messages.each do |question_err_msg| %>
+        <li><%= question_err_msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
