@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :user
-
+  FORW = ['fuck', 'anal', 'anus', 'arse','ass', 'bitch', 'blowjob', 'cock', 'boner', 'boob', 'bum','clit', 'cunt', 'damn', 'dildo', 'dyke', 'fag', 'goddamn', 'shit', 'homo', 'jerk', 'jiz', 'nigger', 'shit', 'twat', 'vagina', 'whore', 'buttplug']
   # Question has many Answers, which is also a nested attribute on Q.
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers,
@@ -11,7 +11,7 @@ class Question < ActiveRecord::Base
   #validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   validates :title, presence: true, allow_blank: false, uniqueness: {case_sensitive: false}
   validate :stop_words
-# need to temp disable :title and :answers validation for Rake Task to run properly.
+#  need to temp disable :title and :answers validation for Rake Task to run properly.
 #  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
 
   before_save :cap_title
@@ -75,4 +75,16 @@ class Question < ActiveRecord::Base
     return data_points
   end
 
+    private
+      def stop_words
+        if title.present? && title.include?("monkey")
+        errors.add(:title, "Please don't use profanity!")
+        end
+      end
+      #def stop_words
+      #  if title.present? && title.include?(:title)
+      #    errors.add(:title, "has been restricted from use.")
+      #  end
+      #end
+      
 end

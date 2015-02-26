@@ -24,11 +24,4 @@ class ApplicationController < ActionController::Base
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-
-    def stop_words
-      if title.present? && title.include?("monkey")
-      errors.add(:title, "Please don't use monkey!")
-    end
-  end
-
 end
