@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: [:edit, :update, :show, :destroy]
   #before_action :admin_user, only: [:index]
   before_action :logged_in_user
-  before_action :admin_user, only: [:index]
+  # before_action :admin_user, only: [:index]
   
   def new
     @question = Question.new
@@ -46,6 +46,10 @@ class QuestionsController < ApplicationController
   def index
     #@entire_questions = Question.all
     @questions = Question.all
+
+    # this is a special function to show the content of a ActiveRecord Collection
+    # render json: output_ar(@questions)  # see application_controller.rb
+    
     #@questions = Question.search(params[:search])
     #@questions = Question.all 
     # Patching all Question

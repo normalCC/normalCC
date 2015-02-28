@@ -12,13 +12,13 @@ class User < ActiveRecord::Base
 
 #  validates :birth_year, :female, presence: true
 #  validates :female, presence: true, inclusion: { in: [true, false] }
-#  validates :birth_year, presence: true, numericality: true
+  validates :birth_year, presence: true, numericality: true
   #validates :country, presence: true  #do not turn this on in case of perform_reverse_geocode returns "nil" for country
   validate :valid_birth_year #custom validate birth_year, 1910 - 2015, shorter range?
   
   attr_accessor :address
   geocoded_by :ip_address
-  after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
+ # after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
   reverse_geocoded_by :latitude, :longitude
   after_validation :perform_reverse_geocode  # auto-fetch address
 
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 5 }, allow_blank: true
 
   def valid_birth_year
-    if (birth_year < 1910) || (birth_year > 2015)
+    if (self.birth_year.to_i < 1910) || (self.birth_year.to_i > 2015)
       errors.add(:birth_year, "valid birth year must be between 1910 and 2015!")
     end
   end

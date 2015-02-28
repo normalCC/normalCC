@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
 
     private 
 
+    # Function to show the contents of an ActiveRecord collection. 
+    def output_ar(collection)
+      # To be able to read it, even if it's not a collection, make sure
+      # it's a collection by wrapping it in   [ ]
+      collection = Array.wrap(collection)  
+      collection = collection.map { |i| i.attributes }
+    end
+
     def logged_in_user
       unless logged_in?
         store_location
