@@ -36,7 +36,7 @@ namespace :fake_data do
     end
   end
   
-  ############ RUN THIS TASK ##############
+  ############ RUN THIS TASK, IT WILL CALL THE LOWER TWO TASKS   ##############
   desc "Create 20 fake lines in the scorecard, depends on below two tasks"
   task :create_s => [:create_20_users, :create_qa] do 
 
@@ -44,7 +44,7 @@ namespace :fake_data do
       the_user_id = User.first.id + a
       the_answer_id = Answer.first.id + Random.rand(5)   # only allows answer_ids within the first 5 answers
       # puts first_user_id + a
-      Scorecard.create(user_id: the_user_id, answer_id: the_answer_id  )
+      Scorecard.create!(user_id: the_user_id, answer_id: the_answer_id  )
     end
   end   
 
@@ -52,8 +52,18 @@ namespace :fake_data do
   task :create_20_users => :environment do 
 
     20.times do |n|
-      User.create(email: "sample#{Random.rand(10000000)}@email.com", female: [true, false].sample, 
-        birth_year: (1920 + Random.rand(40)), country: Country.all.sample)
+      User.create!( email: "sample#{Random.rand(10000000)}@email.com", 
+                  birth_year: (1920 + Random.rand(40)), 
+                  female: [true, false].sample, 
+                  country_id: Country.first.id,
+                  ip_address: "15.15.15.15",
+                  latitude: 123.55555,
+                  longitude: 123.231,
+                  name: "boris",
+                  password_digest: "123412342134",
+                  admin: false,
+                  activated: true,
+                  activated_at: "Tue, 24 Feb 2015 03:44:44 UTC +00:00")
       # puts params
       # User.create!(params)
     end
@@ -63,13 +73,13 @@ namespace :fake_data do
   task :create_qa => :environment do 
 
     #  create the question
-    question = Question.create(title: "What time do you go to bed?", user_id: User.first.id )
+    question = Question.create!(title: "What time do you go to bed?", user_id: User.first.id )
 
     # create answers 
     possible_answers = ["7pm", "9pm", "11pm", "1am", "3am"]
 
     5.times do |a|
-      Answer.create(title: possible_answers[a-1], question_id: Question.first.id)
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
     end
   end   
  
