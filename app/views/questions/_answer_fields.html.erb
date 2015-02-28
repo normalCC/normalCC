@@ -1,8 +1,6 @@
-<div class="row nested-fields well">
   <div class="col-sm-6 col-sm-6">
-    <%= f.input :title %>
+    <%= f.input :title, label: "Answer: " %>
   </div>
  
-  <%= link_to_remove_association "remove task", f, class: "btn btn-danger btn-sm" %>
+  <%= link_to_remove_association "remove this answer", f, class: "btn btn-danger btn-sm" %>
   <hr>
-</div>

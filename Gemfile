@@ -11,10 +11,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -23,14 +20,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 gem 'bcrypt'
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
 gem 'animate-rails'  # this is for animation through CSS effects
@@ -40,7 +29,7 @@ gem 'autoprefixer-rails' # for SASS on rails
 
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 
-gem 'devise'         # authentication module
+#gem 'devise'         # authentication module
 gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 
 #gem 'haml-rails'
@@ -69,8 +58,8 @@ gem "cocoon"  #use for nested attributes
 
 
 group :development do 
-  gem "colorize"
-  gem "interactive_editor"
+  #gem "colorize"
+  #gem "interactive_editor"
   gem "hirb"
   gem "awesome_print"
   gem "letter_opener" #to do with email client/mailer(?)

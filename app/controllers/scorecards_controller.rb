@@ -1,6 +1,6 @@
 class ScorecardsController < ApplicationController
   before_action :find_answer, only: [:create, :destroy]
-
+  before_action :logged_in_user
   def create
     #find_answer
     scorecard = @answer.scorecards.new

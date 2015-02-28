@@ -36,7 +36,7 @@ namespace :fake_data do
     end
   end
   
-  ############ RUN THIS TASK, IT WILL CALL THE LOWER TWO TASKS   ##############
+  ##### RUN THIS TASK, IT WILL CALL THE LOWER TWO TASKS   ##### $ bin/rake fake_data:create_s
   desc "Create 20 fake lines in the scorecard, depends on below two tasks"
   task :create_s => [:create_20_users, :create_qa] do 
 
@@ -56,7 +56,7 @@ namespace :fake_data do
                   birth_year: (1920 + Random.rand(40)), 
                   female: [true, false].sample, 
                   country_id: Country.first.id,
-                  ip_address: "15.15.15.15",
+                  ip_address: "15.15.15q.15",
                   latitude: 123.55555,
                   longitude: 123.231,
                   name: "boris",
