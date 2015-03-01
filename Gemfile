@@ -59,7 +59,7 @@ gem "cocoon"  #use for nested attributes
 
 group :development do 
   #gem "colorize"
-  #gem "interactive_editor"
+  gem "interactive_editor"
   gem "hirb"
   gem "awesome_print"
   gem "letter_opener" #to do with email client/mailer(?)

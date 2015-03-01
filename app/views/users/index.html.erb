@@ -1,5 +1,16 @@
-<h1>Welcome to the home page</h1>
+<h2 class='text-center'>Arguing about who's normal?</h2>
+<h1 class='text-center'>At least one of you is clearly wrong.</h1>
+<h2 class='text-center'>Settle the question.</h2>
 
+<%# link_to 'Sign up', new_user_path, class: "btn btn-lg btn-primary"  %>
+<br>
 
-<%= link_to 'Sign up', new_user_path, class: "btn btn-lg btn-primary"  %>
-
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <%= form_for(@user) do |f| %>
+    <%= render 'fields', f: f %>
+    <br>
+    <%= f.submit "Create My Account", class: "form-control btn btn-info" %>
+  <% end %>
+</div>
+<div class="col-md-4"></div>
