@@ -31,11 +31,13 @@ class Question < ActiveRecord::Base
       self.all
     end
   end
+
   def self.not_time(parts)
       if parts
         where.not("title @@ :s", s: parts )
       end
   end
+  
   def self.time_search(words)
 
     if words
@@ -74,5 +76,10 @@ class Question < ActiveRecord::Base
     end
     return data_points
   end
-
+  
+  def stop_words
+    if title.present? && title.include?("monkey")
+    errors.add(:title, "Please don't use monkey!")
+    end
+  end
 end

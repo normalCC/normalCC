@@ -17,8 +17,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.new  # added to let users sign up on index page
     #@questions = Question.all
-    @users = User.all
+    # @users = User.all
     #@users = User.paginate(page: params[:page])
   end
 
