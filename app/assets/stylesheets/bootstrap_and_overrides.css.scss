@@ -1,37 +1,64 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url("http://fonts.googleapis.com/css?family=Playfair+Display:400,400italic");
+
+$brand-primary: aqua;
+.well {background-color: rgba(93, 142, 160, 0.83); }
+.inline_well {display: inline-block;}
+
+p, h1, h3, h5, h6, .white_Playfair {
+    font-family: 'Playfair Display', serif; font-weight: 400; color: white;
+  a {color: white;}
+}
+h1 { margin: 10px;}
+h2, h4 {font-family: 'Playfair Display', serif; font-weight: 400; color: white; font-style: italic;}
+// .headline { padding-left: 30px; }
+
+hr { margin: 3px;}
 
 #chart_div {
   display: inline-block;
 }
+body {   
+  background-color: #cccccc;
+ }
 
-.row {
-  position:absolute;
-  top: 0px;
-  left: 0px;}
-
-.image_big {
+.image_holder{
   position:absolute;
   top: 0px;
   left: 0px;
-  width: 500px;
-  // width:100%;
-  // max-width: 100%;
-  z-index:-1;
+  width: 100%; height: 100%;
+  z-index: -2;
 }
 
-.navbar {
-  // position:absolute;
-  left: 0px;
-  width:100%;
-  background-color: rgba(0, 0, 0, 0.3);
+#background_image_to_slant{
+  position: relative;
+  overflow: hidden;
+  width: 100%; height: 100%;
+  // width: 1800px;
+  // height: 800px;
+}
+
+#background_image_to_slant:after // weird hack to transform a background image
+{
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  // z-index: -1;
+  background-image: url(/images/opt_1800x800/1.jpg);
+  transform-origin: 0 0;
+  -webkit-transform: skewX(-15deg); /* Chrome, Safari, Opera */
+  -moz-transform: skewX(-15deg);
+  -ms-transform: skewX(-15deg); /* IE 9 */
+  transform: skewX(-15deg); /* Standard syntax */
+  // transition: background 2s ease-out;  // works sortof if you have another state https://css-tricks.com/almanac/properties/t/transition/
+}
+
+.navbar-inner{ 
+  padding-bottom: 20px;
   color: white;
-  a {color: white;}
-}
-
-.navbar-inner{
-  display: flex;
-  justify-content:center; 
+  a {color:white;}
 }
 
 #columnchart {

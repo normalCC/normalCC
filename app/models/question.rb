@@ -13,7 +13,12 @@ class Question < ActiveRecord::Base
   validate :stop_words
 #  need to temp disable :title and :answers validation for Rake Task to run properly.
 #  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
-
+  #validates_each :title do |stop_words|
+  #end
+  #validates_each :title do |stop_words|
+  #  record.errors.add(stop_words, 'plus') #if value =~ /\A[a-z]/
+  #end
+  #What about validates with/?????????? 
   before_save :cap_title
   #validates :title, presence: true, length: {minimum: 5, maximum: 30}
   scope :where_title, lambda { |term| where("questions.title iLIKE ?", "%#{term}%") }
@@ -31,11 +36,13 @@ class Question < ActiveRecord::Base
       self.all
     end
   end
+
   def self.not_time(parts)
       if parts
         where.not("title @@ :s", s: parts )
       end
   end
+  
   def self.time_search(words)
 
     if words
@@ -82,10 +89,10 @@ class Question < ActiveRecord::Base
     end
   end
 
-
     private
       def stop_words
-        if title.present? && !check_words
+        #if title.present? && !check_words.present?
+       if check_words
           errors.add(:title, "Please don't use profanity!")
         end
       end

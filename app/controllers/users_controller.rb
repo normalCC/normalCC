@@ -17,8 +17,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.new  # added to let users sign up on index page
     #@questions = Question.all
-    @users = User.all
+    # @users = User.all
     #@users = User.paginate(page: params[:page])
   end
 
@@ -29,14 +30,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user != nil
-      # get user's current IP address, this will get translated into latitude and longitude after_validation via User Model. 
-      # @user.ip_address = request.remote_ip            # BUG WITH THIS LINE
-    else
-      flash[:alert] = "@user is nil"
-      redirect_to root_path
-    end    
-
+    # get user's current IP address, this will get translated into latitude and longitude after_validation via User Model. 
+    @user.ip_address = request.remote_ip            # BUG WITH THIS LINE
+    
     if @user.save
       log_in @user
       flash[:success] = "LOGGED IN "
