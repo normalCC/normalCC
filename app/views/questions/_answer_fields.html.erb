@@ -1,6 +1,6 @@
-  <div class='row'>
+  <div class='row nested-fields'>
     <div class="col-sm-6 col-sm-6">
-      <%= f.input :title, label: "Answer: ", :input_html => {:size => 40, :maxlength => 4} %>
+      <%= f.input :title, label: "Answer choice:", :input_html => {:size => 40, :maxlength => 4} %>
     </div>
    <div class="col-sm-6 col-sm-6">
     <%= link_to_remove_association "remove this answer", f, class: "btn btn-danger btn-sm" %>
