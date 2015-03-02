@@ -1,7 +1,7 @@
 <%= simple_form_for @question, html: { class: 'form-horizontal' } do |f| %>
-  <%= f.input :title, label: "Question:" %>
+  <%= f.input :title, label: "", :input_html => {:size => 80, :maxlength => 80} %> 
 
-  <h3>Answers:</h3>
+  <h3>Edit Answers:</h3>
   <p> It's good to give a wide spectrum of answers for people to pick. It'll make your graph look nice.</p>
   <%= f.full_error :answers %>
   <%= f.simple_fields_for :answers do |ans| %>

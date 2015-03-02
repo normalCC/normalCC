@@ -54,6 +54,7 @@ body {
   transform: skewX(-15deg); /* Standard syntax */
   // transition: background 2s ease-out;  // works sortof if you have another state https://css-tricks.com/almanac/properties/t/transition/
 }
+.splash_size{ font-size: 400%; }
 
 .navbar-inner{ 
   padding-bottom: 20px;
@@ -65,4 +66,7 @@ body {
   position:absolute;
   top: -10px;
   left: 0px;
+}
+.simple_form label {
+  font-family: 'Playfair Display', serif; font-weight: 400; color: white;
 }

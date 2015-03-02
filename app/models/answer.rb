@@ -1,5 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
+  has_many :scorecards, dependent: :destroy
 
   validates :title, presence: true, uniqueness: {scope: :question_id}
   validate :stop_words
