@@ -5,12 +5,12 @@
   <p> It's good to give a wide spectrum of answers for people to pick. It'll make your graph look nice.</p>
   <%= f.full_error :answers %>
   <%= f.simple_fields_for :answers do |ans| %>
-    <%= render "answer_fields", f: ans %>
+    <%= render partial: "answer_fields", locals: { f: ans } %>
   <% end %>
 
 
   <div class="links">
-    <%= link_to_add_association 'Add more answers', f, :answers, class: "btn btn-primary" %>
+    <%= link_to_add_association 'Add more answer choices', f, :answers, class: "btn btn-primary" %>
   </div>
 
   <%= f.submit %>
