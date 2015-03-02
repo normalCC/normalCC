@@ -13,9 +13,9 @@
     <div class='image_holder'><div id="background_image_to_slant"></div></div> 
     <div class="container">
       <div class="row white_Playfair">
+      <h1 class="headline text-center">Am I normal?</h1>
+      <hr>  
         <% if logged_in? %>
-          <h1 class="headline text-center">Am I normal?</h1>
-          <hr>  
           <div class="navbar-inner  text-center">
             <a href="/">HOME</a>  &nbsp &nbsp &nbsp<%# removed class="animated rubberBand" %>
             <%= link_to "NEW QUESTIONS", new_question_path %> &nbsp &nbsp &nbsp
@@ -29,8 +29,10 @@
             <% end %>
           </div>
         <% else %>
+        <div class=" text-center">
           <%= link_to 'SIGN UP', new_user_path  %> &nbsp &nbsp &nbsp
           <%= link_to 'LOG IN', login_path %> 
+        </div>
         <% end %>
       </div>
       <% flash.each do |name, msg| %>

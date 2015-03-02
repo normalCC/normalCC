@@ -1,7 +1,7 @@
 <div class='image_holder'><div id="background_image_to_slant"></div></div> 
 <div class="row white_Playfair">
   <div class="col-sm-9 col-md-9">
-    <h1><%= @question.title %></h1>
+    <h2><%= @question.title %></h2>
     <!-- <p>Created on: <%= stdDate(@question.created_at) %></p> 
     <p>Created by: <%#= @question.user_email %></p>
     <p>View count: <%#= @question.view_count %></p>
@@ -22,11 +22,9 @@
     <%# end %>
   </div>
   <div class="">
-    <h2>Answers:</h2>
+    <h3>Answers:</h3>
     <% @question.answers.each do |a| %>
-      <div class="well inline_well">
-        <h3><%= a.title %></h3>
-      </div>
+      <%= link_to a.title, scorecards_path(a), method: :post, class: "btn btn-info" %>
     <% end %>
   </div>
   <%# render "graph" %>

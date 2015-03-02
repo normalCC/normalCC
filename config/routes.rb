@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :searches
+  resources :scorecards, only: [:create, :destroy]
 
   resources :questions do 
     resources :answers, only: [:create, :update, :destroy]

@@ -2,14 +2,16 @@ class ScorecardsController < ApplicationController
   before_action :find_answer, only: [:create, :destroy]
   before_action :logged_in_user
   def create
-    #find_answer
+    # render text: params
+
     scorecard = @answer.scorecards.new
     scorecard.user = current_user
-
+    # render json: output_ar(@answer)
     if scorecard.save
-
+      @show_graph = true  # now that the user has chosen their answer, show the graph.
+      redirect_to question_path(@answer.question)
     else
-
+      render question_path(@answer.question), notice: "Something went wrong, we couldn't save your answer."
     end
   end
 
@@ -26,7 +28,7 @@ class ScorecardsController < ApplicationController
   private
 
     def find_answer
-      @answer = Answer.find(params[:answer_id])
+      @answer = Answer.find(params[:format])
     end
 
 end
