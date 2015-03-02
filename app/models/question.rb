@@ -72,13 +72,21 @@ class Question < ActiveRecord::Base
     self.answers.each do |a|
       data_points.push([ a.id, Scorecard.where(answer_id: a.id).count, a.title ])  # a.id removed
     end
-    return data_points
+    #return data_points only if for early return
+    data_points
   end
+
+  def check_words
+    FORW.all? do |word|
+      self.title.include? word
+    end
+  end
+
 
     private
       def stop_words
-        if title.present? && title.include?("monkey")
-        errors.add(:title, "Please don't use profanity!")
+        if title.present? && !check_words
+          errors.add(:title, "Please don't use profanity!")
         end
       end
       #def stop_words
