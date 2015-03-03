@@ -1,7 +1,7 @@
 <h1> Search Results</h1>
 
 <%#= render @search.questions %>
-<h1>Searching for keyword: <%= @search.keywords %>, title: <%= @search.title %>, Name: <%= @search.name %>, Part: <%= @search.part %></h1>
+<h1>Searching for Keyword: <%= @search.keywords %>, Keyword: <%= @search.title %>, Keyword: <%= @search.name %>, <br> Excluding Keyword: <%= @search.part %></h1>
 <h1><% @questions.each do |q| %></h1>
   <%= q.title %>
   <hr>

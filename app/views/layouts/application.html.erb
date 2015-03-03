@@ -12,16 +12,16 @@
   <body>
     <div class='image_holder'><div id="background_image_to_slant"></div></div> 
     <div class="container">
+
       <div class="row white_Playfair">
       <h2 class="headline text-center">Am I normal?</h2>
       <hr>  
         <% if logged_in? %>
           <div class="navbar-inner  text-center">
-            <%= link_to "HOME", new_user_path %>   &nbsp &nbsp &nbsp<%# removed class="animated rubberBand" %>
-            <%= link_to "NEW QUESTIONS", new_question_path %> &nbsp &nbsp &nbsp
-            <%= link_to "LIST QUESTIONS", questions_path %>&nbsp &nbsp &nbsp
+            <a href="/">HOME</a>  &nbsp &nbsp &nbsp<%# removed class="animated rubberBand" %>
+            <%= link_to "NEW QUESTIONS", new_question_path %> &nbsp&nbsp &nbsp
             <%= link_to 'PROFILE', current_user %> &nbsp &nbsp &nbsp
-            <%= link_to 'LOGOUT', logout_path, method: 'delete' %>
+            <%= link_to 'LOGOUT', logout_path, method: 'delete' %> &nbsp &nbsp &nbsp
             <% if current_user.admin %>
               <%= link_to 'DATABASE', data_path %> &nbsp &nbsp &nbsp
               <%= link_to "LIST  QUESTIONS", questions_path %> &nbsp &nbsp &nbsp
