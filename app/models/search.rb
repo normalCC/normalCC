@@ -4,13 +4,13 @@ class Search < ActiveRecord::Base
   #  @questions ||= find_questions
   #end
 
-  def self.text_search(query) 
-    if query
-      #where("title @@ :q or title @@ :q", q: "%#{query}%") #or content @@ :q",
-      where("title iLIKE :q", q: "%#{query}%") #can't search multiple words
-      #how do i split it?
-    end
-  end
+  #def self.text_search(query) 
+  #  if query
+  #    #where("title @@ :q or title @@ :q", q: "%#{query}%") #or content @@ :q",
+  #    where("title iLIKE :q", q: "%#{query}%") #can't search multiple words
+  #    #how do i split it?
+  #  end
+  #end
 
     private
     def find_questions

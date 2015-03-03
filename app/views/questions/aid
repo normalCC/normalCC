@@ -73,3 +73,6 @@
         <% else %>
           <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
         <% end %>
+
+
+        

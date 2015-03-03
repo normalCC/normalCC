@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   
-  get 'admin_users/index'
+  #get 'admin_users/index'
 
-  get 'admin_users/new'
+  #get 'admin_users/new'
 
-  get 'sessions/new'
+  #get 'sessions/new'
 
   resources :users
   resources :searches
@@ -23,10 +23,14 @@ Rails.application.routes.draw do
   post   'login'   =>  'sessions#create'
   delete 'logout'  =>  'sessions#destroy'
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
   patch "/make_admin/:id" => "users#make_admin", as: :make_admin
+  #get "users#index"
 
-  root "users#new" 
+  root 'sessions#new' # "users#index" #WXU??? change this to User sign-in page
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

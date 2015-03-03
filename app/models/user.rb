@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   before_save   :downcase_email
   before_create :create_activation_digest
   before_save :birth_year_to_i
-  FORBIDDEN_USERNAMES = ['shit','fuck','ass', 'piss', 'cunt', 'cock']
+  before_save :username_is_allowed
+  FORBIDDEN_USERNAMES = ['%#{shit}%', '%#{fuck}%', '%#{ass}%', '%#{piss}%', 'cunt', 'cock']
 
   has_many :questions, dependent: :nullify
   has_many :scorecards, dependent: :destroy
@@ -43,6 +44,29 @@ class User < ActiveRecord::Base
              # uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, length: {minimum: 5 }, allow_blank: true
+
+  def self.from_omniauth(auth)
+    #user = User.where(provider: "omniauth", uid: auth[])
+     #where(auth.slice(:provider, :uid)).first_or_initialize.tap# do |user|
+
+      #user.provider = auth.provider
+      #user.uid = auth.uid
+      #user.name = auth.info.name
+      #user.oauth_token = auth.credentials.token
+      #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      #user.save!
+   # end
+    #where(auth.slice(:name, :email, :password,
+    #   :password_confirmation, :birth_year, :female)).first_or_initialize.tap do |user|
+    #  #user.email = auth.email
+    #  user.password = auth.password
+    #  user.name = auth.info.name
+    #  #user.birth_year = auth.info.birth_year
+    #  #user.oauth_token = auth.credentials.token
+    #  #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    #  user.save!
+    #end
+  end
 
   def valid_birth_year
     if (self.birth_year.to_i < 1910) || (self.birth_year.to_i > 2015)
@@ -101,8 +125,8 @@ class User < ActiveRecord::Base
       end
 
       def username_is_allowed
-        if FORBIDDEN_USERNAMES.include?(username)
-          errors.add(:username, "has been restricted from use.")
+        if FORBIDDEN_USERNAMES.include?(:name)
+          errors.add(:name, "has been restricted from use.")
         end
       end
       
