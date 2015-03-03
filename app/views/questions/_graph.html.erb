@@ -2,8 +2,7 @@
 Note: I have used the "classic chart", not their "material design" version.  -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-  google.load('visualization', '1.1', {packages: ['corechart']});
-  google.setOnLoadCallback(drawChart);
+  google.load('visualization', '1', {'packages':['corechart'], "callback": drawChart});
 
   function drawChart() {
     // var data = google.visualization.arrayToDataTable(<%= raw @question.graph_data %>); 
@@ -14,7 +13,7 @@ Note: I have used the "classic chart", not their "material design" version.  -->
     data.addColumn({type:'string', role:'annotation'});
 
     // raw has to be here to allow the quotes
-    data.addRows(<%= raw @question.graph_data %>);  
+    data.addRows(<%= raw @graph_data %>);  
 
     var options = {
       annotations: {

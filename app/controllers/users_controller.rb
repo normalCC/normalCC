@@ -10,8 +10,11 @@ class UsersController < ApplicationController
 # to a new question.
   def new
     if logged_in?
-      question = Question.first
-      redirect_to question_path(question)
+      @user = current_user
+      @question = Question.first
+      @answer = Answer.new
+      # render json: output_ar(@question)
+      redirect_to question_path(@question)
     else
       @user = User.new 
     end

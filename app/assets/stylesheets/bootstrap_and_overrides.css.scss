@@ -12,7 +12,7 @@ p, h1, h3, h5, h6, .white_Playfair {
 }
 h1 { margin: 10px;}
 h2, h4 {font-family: 'Playfair Display', serif; font-weight: 400; color: white; font-style: italic;}
-// .headline { padding-left: 30px; }
+.headline { margin-bottom: 0px; margin-top: 10px; font-size: 240%;}
 
 hr { margin: 3px;}
 
@@ -35,8 +35,6 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%; height: 100%;
-  // width: 1800px;
-  // height: 800px;
 }
 
 #background_image_to_slant:after // weird hack to transform a background image
@@ -45,9 +43,7 @@ body {
   position: absolute;
   width: 200%;
   height: 200%;
-  // z-index: -1;
   background-image: url(/images/opt_1800x800/1.jpg);
-
   transform-origin: 0 0;
   -webkit-transform: skewX(-15deg); /* Chrome, Safari, Opera */
   -moz-transform: skewX(-15deg);
