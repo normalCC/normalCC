@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
     if @question.update question_params
       redirect_to @question, notice: "Question updated successfully."
     else
-      flash[:alert] = "Campaign FAILED to update"
+      flash[:alert] = "Question FAILED to update"
       render :edit
     end
   end

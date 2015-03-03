@@ -1,32 +1,55 @@
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div id='chart_holder'><%= render "graph" %></div>
+    </div>
+  </div>
+</div>
+
 <div class='image_holder'><div id="background_image_to_slant"></div></div> 
-<div class="row white_Playfair">
-  <div class="col-sm-9 col-md-9">
-    <h2><%= @question.title %></h2>
-    <!-- <p>Created on: <%= stdDate(@question.created_at) %></p> 
-    <p>Created by: <%#= @question.user_email %></p>
-    <p>View count: <%#= @question.view_count %></p>
-    <p>Like count: <%#= @question.likes_count %></p> -->
-  </div>
-  <div class="col-md-3">  <!-- use with miniMagick image attachment -->
-    <%#= image_tag @question.image_url(:medium) %>
-
-    <p>Like count: <%#= @question.likes_count %></p>
-
-
-    <%# if can? :edit, @campaign %>
-      <%= link_to "Edit", edit_question_path(@question), class: "btn btn-info" %>
-    <%# end %>
-    <%# if can? :destroy, @campaign %>
-      <%= link_to "Delete", @question, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
-
-    <%# end %>
-  </div>
-  <div class="">
-    <h3>Answers:</h3>
+<div class="row white_Playfair text-center">
+  <h2><%= @question.title %></h2>
+  <!-- <p>Created on: <%= stdDate(@question.created_at) %></p> 
+  <p>Created by: <%#= @question.user_email %></p>
+  <p>View count: <%#= @question.view_count %></p>
+  <p>Like count: <%#= @question.likes_count %></p> -->
+<div class="row">
+<div class="col-md-4 col-sm-2"></div>
+  <div class="col-md-4 col-sm-4">
+   <!--  <h3>Answers:</h3> -->
     <% @question.answers.each do |a| %>
-      <%= link_to a.title, scorecards_path(a), method: :post, class: "btn btn-info" %>
+      <%= button_to a.title, scorecards_path(a), method: :post, remote: true,
+        class: "btn btn-info btn-wide", data: { toggle: "modal", target: ".bs-example-modal-lg" } %>
+      <br>
     <% end %>
   </div>
-  <%# render "graph" %>
+</div>
+
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+
+
+
+
+
+
+
+
+
+
+   <!-- use with miniMagick image attachment -->
+  <%#= image_tag @question.image_url(:medium) %>
+
+  <p>Like count: <%#= @question.likes_count %></p>
+
+
+  <%# if can? :edit, @campaign %>
+    <%= link_to "Edit", edit_question_path(@question), class: "btn btn-info" %>
+  <%# end %>
+  <%# if can? :destroy, @campaign %>
+    <%= link_to "Delete", @question, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
+
+  <%# end %>
   
 </div>

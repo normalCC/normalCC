@@ -47,6 +47,7 @@ body {
   height: 200%;
   // z-index: -1;
   background-image: url(/images/opt_1800x800/1.jpg);
+
   transform-origin: 0 0;
   -webkit-transform: skewX(-15deg); /* Chrome, Safari, Opera */
   -moz-transform: skewX(-15deg);
@@ -62,11 +63,20 @@ body {
   a {color:white;}
 }
 
-#columnchart {
-  position:absolute;
-  top: -10px;
-  left: 0px;
+#chart_holder {
+  // position:relative;
+  // top: -150px;
+  // left: 0px;
 }
 .simple_form label {
   font-family: 'Playfair Display', serif; font-weight: 400; color: white;
+}
+.btn-wide{
+  width:100%;
+  margin-left:0;
+  margin-right:0;
+  padding-left:0;
+  padding-right:0;
+  display:block;
+  text-align:center;
 }
