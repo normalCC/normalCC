@@ -111,7 +111,7 @@ namespace :fake_data do
     end
  
     question = Question.create!(title: "What time do you eat?", user_id: User.first.id )
-    possible_answers = ["6am", "1", "2", "3", "4", "5", "6", "As many as she freaking wants."]
+    possible_answers = ["5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "Midnight"]
     possible_answers.count.times do |a|
       Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
     end
