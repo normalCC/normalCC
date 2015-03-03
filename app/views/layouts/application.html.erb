@@ -14,7 +14,7 @@
     <div class="container">
 
       <div class="row white_Playfair">
-      <h2 class="headline text-center">Am I normal?</h2>
+      <a href="/"><h2 class="headline text-center">Am I normal?</h2></a>
       <hr>  
         <% if logged_in? %>
           <div class="navbar-inner  text-center">
@@ -47,6 +47,8 @@
           <%= content_tag :div, msg, class: "alert alert-info", role: "alert" %>
         <% end %>
       <% end %>
+      <%# test flash messages %>
+  <%= flash[:notice] || flash[:alert] || flash[:danger] %>
 
       <%= yield %>
       

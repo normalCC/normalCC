@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :country
   attr_accessor :remember_token, :activation_token
-  before_save   :downcase_email
+  # before_save   :downcase_email
   before_create :create_activation_digest
   before_save :birth_year_to_i
   before_save :username_is_allowed

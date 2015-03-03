@@ -59,17 +59,15 @@ namespace :fake_data do
                   ip_address: "15.15.15q.15",
                   latitude: 123.55555,
                   longitude: 123.231,
-                  name: "boris",
+                  name: "boris#{Random.rand(10000)}",
                   password_digest: "123412342134",
                   admin: false,
                   activated: true,
                   activated_at: "Tue, 24 Feb 2015 03:44:44 UTC +00:00")
-      # puts params
-      # User.create!(params)
     end
   end
 
-  desc "Create a fake question and 5 answers."
+  desc "Create fake questions and answers."
   task :create_qa => :environment do 
 
     #  create the question
@@ -78,9 +76,46 @@ namespace :fake_data do
     # create answers 
     possible_answers = ["7pm", "9pm", "11pm", "1am", "3am"]
 
-    5.times do |a|
+    possible_answers.count.times do |a|
       Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
     end
-  end   
+
+    question = Question.create!(title: "What colour is this dress?", user_id: User.first.id )
+    possible_answers = ["Are you serious?", "I'm going outside.", "You realise there is a massive refugee crisis in Syria?"]
+    possible_answers.count.times do |a|
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    end
+   
+    question = Question.create!(title: "Eating how many pieces of chocolate per day is normal?", user_id: User.first.id )
+    possible_answers = ["Nothing", "1", "2", "3", "4", "5", "6", "There is no limit."]
+    possible_answers.count.times do |a|
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    end
+
+    question = Question.create!(title: "How many black cardigans is normal for a girl to own?", user_id: User.first.id )
+    possible_answers = ["0", "1", "2", "3", "4", "5", "6", "As many as she freaking wants."]
+    possible_answers.count.times do |a|
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    end
+
+    question = Question.create!(title: "You have two friends who are from the same family. They've fought and don't talk. Is it good to try to patch things up?", user_id: User.first.id )
+    possible_answers = ["No you idiot.", "Yes, but prepare to be burnt"]
+    possible_answers.count.times do |a|
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    end
  
+    question = Question.create!(title: "When are you the most productive?", user_id: User.first.id )
+    possible_answers = ["3am", "6am", "9am", "Midday", "3pm", "6pm", "9pm", "12pm"]
+    possible_answers.count.times do |a|
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    end
+ 
+    question = Question.create!(title: "What time do you eat?", user_id: User.first.id )
+    possible_answers = ["5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "Midnight"]
+    possible_answers.count.times do |a|
+      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    end
+
+
+  end   
 end
