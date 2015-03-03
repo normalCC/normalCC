@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :searches
+  resources :scorecards, only: [:create, :destroy]
 
   resources :questions do 
     resources :answers, only: [:create, :update, :destroy]
@@ -27,8 +28,9 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   patch "/make_admin/:id" => "users#make_admin", as: :make_admin
+  #get "users#index"
 
-  root "users#index" #WXU??? change this to User sign-in page
+  root 'sessions#new' # "users#index" #WXU??? change this to User sign-in page
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
