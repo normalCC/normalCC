@@ -1,25 +1,25 @@
-<h1>Welcoem to the home page please sign up or login</h1>
 
+<div class="col-xs-2 col-sm-3 col-md-4"></div>
+<div class="col-xs-8 col-sm-6 col-md-4">
+  <h2 class ='text-center splash_size'>Login</h2>
 
-New user?<%= link_to 'Sign up', new_user_path, class: "btn btn-lg btn-primary"  %>
-<br>
+  <%= form_for(:session, url: login_path) do |f| %>
 
-<br>
+  <h4>Name or email
+  <%= f.email_field :email, class: 'form-control' %>
+  </h4>
 
-<%= form_for(:session, url: login_path) do |f| %>
+  <h4>Password
+  <%#= link_to "(forgot password)", new_password_reset_path %>
+  <%= f.password_field :password, class: 'form-control' %>
+  </h4>
 
-<%= f.label :email %>
-<%= f.email_field :email, class: 'form-control' %>
-
-<%= f.label :password %>
-<%#= link_to "(forgot password)", new_password_reset_path %>
-<%= f.password_field :password, class: 'form-control' %>
-
-<%#= f.label :remember_me, class: 'checkbox inline' do %>
-<%#= f.check_box :remember_me %>
-<%# end %>
-<br>
-<%= f.submit "Log in", class: "btn btn-primary" %>
-<% end %>
-<br>
-<p>New User? <%= link_to "Sign up now!", signup_path %></p>
+  <%#= f.label :remember_me, class: 'checkbox inline' do %>
+  <%#= f.check_box :remember_me %>
+  <%# end %>
+  <br>
+  <%= f.submit "Log in", class: "btn btn-wide btn-primary" %>
+  <% end %>
+  <br>
+  <p>New User? <%= link_to "Sign up now!", signup_path %></p>
+</div>

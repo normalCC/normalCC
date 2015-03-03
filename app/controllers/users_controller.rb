@@ -6,8 +6,18 @@ class UsersController < ApplicationController
   #before_action :authenticate_admin!, only: [:index, :destroy, :make_admin]
   #before_action :authenticate_user!, only: [:edit, :update]
 
+# the root path comes to here, if the user is logged in then they go straight 
+# to a new question.
   def new
-     @user = User.new 
+    if logged_in?
+      @user = current_user
+      @question = Question.first
+      @answer = Answer.new
+      # render json: output_ar(@question)
+      redirect_to question_path(@question)
+    else
+      @user = User.new 
+    end
   end
 
   def home

@@ -30,13 +30,16 @@ class QuestionsController < ApplicationController
     if @question.update question_params
       redirect_to @question, notice: "Question updated successfully."
     else
-      flash[:alert] = "Campaign FAILED to update"
+      flash[:alert] = "Question FAILED to update"
       render :edit
     end
   end
 
   def show
-    find_question
+    # render json: output_ar(@question.graph_data)
+    # @bleem = "hazarrererererere"
+    @graph_data = @question.graph_data
+    # find_question
     # find all the data for this question, to generate graph
     # @rawData2 =  @question.graph_data
   end

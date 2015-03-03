@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private 
 
   # Debugging function to show the contents of an ActiveRecord collection.
-  # Use this in a controller:   render json: output_ar(@questions)
+  # Use this in a controller: render json: output_ar(@questions)
   def output_ar(collection)
     # To be able to read it, even if it's not a collection, make sure
     # it's a collection by wrapping it in   [ ]
