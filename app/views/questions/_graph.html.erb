@@ -2,6 +2,8 @@
 Note: I have used the "classic chart", not their "material design" version.  -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
+// thanks http://stackoverflow.com/questions/22492434/bootstrap-loading-remote-google-chart-into-modal
+// thanks due to: http://stackoverflow.com/users/2435481/john-guan
   google.load('visualization', '1', {'packages':['corechart'], "callback": drawChart});
 
   function drawChart() {
@@ -16,12 +18,13 @@ Note: I have used the "classic chart", not their "material design" version.  -->
     data.addRows(<%= raw @graph_data %>);  
 
     var options = {
+
       annotations: {
-          // alwaysOutside: true,
+          alwaysOutside: false,
           textStyle: {
             fontSize: 18,
             fontName: 'Playfair Display',
-            color: '#000',
+            color: '#999',
             auraColor: 'none'
           },
       },

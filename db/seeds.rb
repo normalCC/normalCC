@@ -3,7 +3,7 @@ User.create!(name: "Example User",
   password: "pizza",
   password_confirmation: "pizza",
   birth_year: "1999",
-  male: true,
+  female: true,
   admin: true,
   activated: true,
   activated_at: Time.zone.now)
