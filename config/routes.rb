@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   patch "/make_admin/:id" => "users#make_admin", as: :make_admin
 
-  root "users#index" #WXU??? change this to User sign-in page
+  root "users#new" 
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

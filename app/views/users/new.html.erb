@@ -1,8 +1,14 @@
-<h1>Sign Up</h1>
-    
-<%= form_for(@user) do |f| %>
-  <%= render 'fields', f: f %>
-  <br>
-  <%= f.submit "Create My Account", class: "form-control btn btn-info" %>
-<% end %>
-  
+<h2 class='text-center splash_size'>Arguing about who's normal?</h2>
+<h1 class='text-center '>At least one of you is clearly wrong.</h1>
+<h2 class=' text-center'>Settle the question.</h2>
+<br>
+<div class='row'>
+  <div class="col-xs-2 col-sm-3 col-md-4"></div>
+  <div class="col-xs-8 col-sm-6 col-md-4">
+    <%= form_for @user, url: {action: "create"} do |f| %>
+      <%= render 'fields', f: f %>
+      <br>
+      <%= f.submit "Sign me up", class: "form-control btn btn-info" %>
+    <% end %>
+  </div>
+</div>
