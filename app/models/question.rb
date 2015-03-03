@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
 
   #validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   validates :title, presence: true, allow_blank: false, uniqueness: {case_sensitive: false}
-  validate :stop_words
+#  validate :stop_words
 #  need to temp disable :title and :answers validation for Rake Task to run properly.
 #  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   #validates_each :title do |stop_words|
@@ -94,12 +94,12 @@ class Question < ActiveRecord::Base
   end
 
     private
-      def stop_words
-        #if title.present? && !check_words.present?
-       if check_words
-          errors.add(:title, "Please don't use profanity!")
-        end
-      end
+      #def stop_words
+      #  #if title.present? && !check_words.present?
+      # if check_words
+      #    errors.add(:title, "Please don't use profanity!")
+      #  end
+      #end
       #def stop_words
       #  if title.present? && title.include?(:title)
       #    errors.add(:title, "has been restricted from use.")

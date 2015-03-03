@@ -1,24 +1,32 @@
 <h2>Create a new question</h2>
 
 <h3>Please check to see is your question has already been asked.</h3>
-<h6>Providing a Single Keyword: "Sleep" or "Cat"</h6>
-<h6>Prodiding a String to search by: "ing" or "is"; will return all questions containing that string.</h6>
+<div class="col-md-4">
+
+<h5>Providing a Single Keyword: "Sleep" or "Cat"</h5>
+<h5>Prodiding a String to search by: "ing" or "is"; will return all questions containing that string.</h5>
 
 <%= form_tag questions_path, :method => 'get' do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Single Word Search", :name => nil %>
 <% end %>
-<br>
-<h4>This will limit your search to full words</h4>
-<h6>Narrow your search field: "Far" or "Accomplished"</h6>
+</div>
+<div class="col-md-4">
+<h5>This will limit your search to full words</h5>
+<h5>Narrow your search field: "Far" or "Accomplished"</h5>
 
 <%= form_tag questions_path, :method => 'get' do %>
   <%= text_field_tag :query, params[:query] %>
   <%= submit_tag "Full Text Search", :name => nil %>
 <% end %>
 <br>
+</div>
+<div class="col-md-4">
 <%= link_to "Advanced Search", new_search_path %>
+</div>
+</div>
 
 <p></p>
+<br>
 <hr>
 <%= render "form" %>

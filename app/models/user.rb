@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   before_save :birth_year_to_i
   before_save :username_is_allowed
-  FORBIDDEN_USERNAMES = ['%#{shit}%', '%#{fuck}%', '%#{ass}%', '%#{piss}%', 'cunt', 'cock']
+  #FORBIDDEN_USERNAMES = ['%#{shit}%', '%#{fuck}%', '%#{ass}%', '%#{piss}%', 'cunt', 'cock']
 
   has_many :questions, dependent: :nullify
   has_many :scorecards, dependent: :destroy
