@@ -8,10 +8,9 @@ class ScorecardsController < ApplicationController
     scorecard.user = current_user
     # render json: output_ar(@answer)
     if scorecard.save
-      @show_graph = true  # now that the user has chosen their answer, show the graph.
-      redirect_to question_path(@answer.question)
+      render nothing: true, status: :created
     else
-      render question_path(@answer.question), notice: "Something went wrong, we couldn't save your answer."
+      render nothing: true, status: :unprocessable_entity
     end
   end
 

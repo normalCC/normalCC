@@ -2,8 +2,7 @@
 Note: I have used the "classic chart", not their "material design" version.  -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-  google.load('visualization', '1.1', {packages: ['corechart']});
-  google.setOnLoadCallback(drawChart);
+  google.load('visualization', '1', {'packages':['corechart'], "callback": drawChart});
 
   function drawChart() {
     // var data = google.visualization.arrayToDataTable(<%= raw @question.graph_data %>); 
@@ -14,13 +13,14 @@ Note: I have used the "classic chart", not their "material design" version.  -->
     data.addColumn({type:'string', role:'annotation'});
 
     // raw has to be here to allow the quotes
-    data.addRows(<%= raw @question.graph_data %>);  
+    data.addRows(<%= raw @graph_data %>);  
 
     var options = {
       annotations: {
           // alwaysOutside: true,
           textStyle: {
             fontSize: 18,
+            fontName: 'Playfair Display',
             color: '#000',
             auraColor: 'none'
           },
@@ -31,20 +31,20 @@ Note: I have used the "classic chart", not their "material design" version.  -->
       },
       trendlines: {
         // 0: {type: 'linear', lineWidth: 5, opacity: .3}
-        0: {type: 'polynomial', degree: 6, lineWidth: 30, opacity: .3}
+        0: {type: 'polynomial', degree: 3, lineWidth: 30, opacity: .3}
       },      
       hAxis: { gridlines: {color: 'transparent'}, textPosition: 'none'},
       vAxis: {title: 'normalness', gridlines: {color: 'transparent'}, textPosition: 'none', 
         titleTextStyle: {
-            fontName: 'Arial',
+            fontName: 'Playfair Display',
             fontSize: 36,
-            color: '#053061',
+            color: '#333333',
             bold: true,
             italic: false
           } },
       baselineColor: 'transparent',
-      width: 800,
-      height: 500, 
+      width: 700,
+      height: 400, 
       bar: {groupWidth: "90%"},
       backgroundColor: "transparent",
       // animation: { duration: 1000},  // doesn't seem to do anything exciting...
@@ -52,6 +52,7 @@ Note: I have used the "classic chart", not their "material design" version.  -->
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+
     chart.draw(data, options);
 
     // Below is for using Material Design Google charts
@@ -61,4 +62,4 @@ Note: I have used the "classic chart", not their "material design" version.  -->
 </script>
 
 <div id="columnchart"></div>
-<%= raw @question.graph_data %>
+<%# raw @question.graph_data %>

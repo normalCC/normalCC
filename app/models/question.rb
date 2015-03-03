@@ -70,9 +70,13 @@ class Question < ActiveRecord::Base
 
   # constructs a 2D array of data points to create the graph of results
   def graph_data   
-    data_points =[]  # this will have [answer.title, answer.count]
+    data_points =[]  # this will hold [x,y, x.title]
+    # a counter number is used to be the "x" values, so that a trend curve
+    # can be calculated. Google charts need this to be a number, not a string.
+    counter = 0
     self.answers.each do |a|
-      data_points.push([ a.id, Scorecard.where(answer_id: a.id).count, a.title ])  # a.id removed
+      counter +=1
+      data_points.push([ counter, Scorecard.where(answer_id: a.id).count, a.title ])
     end
     return data_points
   end
