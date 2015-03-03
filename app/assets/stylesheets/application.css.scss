@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.hello-container {
+  height: 1000px;
+  position: relative;
+  margin: 0 auto;
+}
