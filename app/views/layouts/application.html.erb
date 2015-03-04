@@ -20,8 +20,8 @@
         <% if logged_in? %>
           <div class="navbar-inner  text-center">
             <a href="/">HOME</a>  &nbsp &nbsp &nbsp<%# removed class="animated rubberBand" %>
-            <%= link_to "NEW QUESTIONS", new_question_path %> &nbsp&nbsp &nbsp
-            <%= link_to 'PROFILE', current_user %> &nbsp &nbsp &nbsp
+            <%= link_to "CREATE A QUESTION", new_question_path %> &nbsp&nbsp &nbsp
+            <%= link_to 'MY QUESTIONS', current_user %> &nbsp &nbsp &nbsp
             <%= link_to 'LOGOUT', logout_path, method: 'delete' %> &nbsp &nbsp &nbsp
             <% if current_user.admin %>
               <%= link_to 'DATABASE', data_path %> &nbsp &nbsp &nbsp

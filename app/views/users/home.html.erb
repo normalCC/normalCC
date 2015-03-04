@@ -8,33 +8,40 @@
 
   <%# if user != user.admin? %>       
   <% if !user.admin? %>
-
-    <%= link_to "Make Admin", make_admin_path(user.id), method: :patch,  data: { confirm: "Are you sure?" }  %> <br>
-    <%= link_to user.name, user %>, <br>
-    EMAIL: <%= user.email %>, <br>
-    YEAR: <%= user.birth_year %>, <br>
-    FEMALE: <%= user.female %>, <br>
-    ADMIN: <%= user.admin %>, <br>
-    COUNTRY: <%= user.country_id %>, <br>
-    CREATED AT: <%= user.created_at %>, <br> 
-    DIGEST: <%= user.password_digest %>. <br>
-    <hr>
+    <p>
+      <%= link_to "Make Admin", make_admin_path(user.id), method: :patch,  data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"  %> <br>
+      <%= link_to user.name, user, class: "btn btn-info btn-sm" %> <br>
+      EMAIL: <%= user.email %> <br>
+      YEAR: <%= user.birth_year %> <br>
+      FEMALE: <%= user.female %> <br>
+      ADMIN: <%= user.admin %> <br>
+      LATITUDE: <%= user.latitude %> <br>
+      LONGITUDE: <%= user.longitude %> <br>
+      COUNTRY: <%= user.country_id %> <br>
+      CREATED AT: <%= user.created_at %> <br> 
+      PASSWORD DIGEST: <%= user.password_digest %>. <br>
+      <hr>
+    </p>
   <% end %> <br>
 <% end %>
 
 <h3>Admin Users</h3>   
 <% @users.each do |user| %>
   <% if user.admin? %>
-    <%= link_to "Undo Admin", make_admin_path(user.id), method: :patch,  data: { confirm: "Are you sure?" }  %>
-     <br>
-    <%= link_to user.name, user %>, <br>
-    EMAIL: <%= user.email %>, <br>
-    YEAR: <%= user.birth_year %>, <br>
-    FEMALE: <%= user.female %>, <br>
-    ADMIN: <%= user.admin %>, <br>
-    COUNTRY: <%= user.country_id %>, <br>
-    CREATED AT: <%= user.created_at %>, <br> 
-    DIGEST: <%= user.password_digest %>. <br>
-    <br>
+    <p>
+      <%= link_to "Undo Admin", make_admin_path(user.id), method: :patch,  data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"  %>
+       <br>
+      <%= link_to user.name, user, class: "btn btn-info btn-sm" %> <br>
+      EMAIL: <%= user.email %> <br>
+      YEAR: <%= user.birth_year %> <br>
+      FEMALE: <%= user.female %> <br>
+      ADMIN: <%= user.admin %> <br>
+      Latitude: <%= user.latitude %> <br>
+      longitude: <%= user.longitude %> <br>
+      COUNTRY: <%= user.country_id %> <br>
+      CREATED AT: <%= user.created_at %> <br> 
+      DIGEST: <%= user.password_digest %>. <br>
+      <br>
+    </p>
   <% end %>
 <% end %>
