@@ -15,7 +15,8 @@ class QuestionsController < ApplicationController
     @question = Question.new question_params
     @question.user = current_user
     if @question.save
-      redirect_to @question, notice: "Question created successfully."
+      redirect_to root_path
+      flash[:notice] ="Question created successfully."
     else
       3.times { @question.answers.build }
       flash[:alert] = "Question FAILED to create."
@@ -31,7 +32,8 @@ class QuestionsController < ApplicationController
   def update
     #find_question
     if @question.update question_params
-      redirect_to @question, notice: "Question updated successfully."
+      redirect_to @question
+      flash[:notice] = "Question updated successfully."
     else
       flash[:alert] = "Question FAILED to update"
       render :edit

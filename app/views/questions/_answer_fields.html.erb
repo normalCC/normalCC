@@ -1,8 +1,8 @@
   <div class='row nested-fields'>
     <div class="col-sm-6 col-sm-6">
-      <%= f.input :title, label: "Answer choice:", :input_html => {:size => 40, :maxlength => 24} %>
-    </div>
-   <div class="col-sm-6 col-sm-6">
+      <%= f.input :title, label: "Answer choice: &nbsp".html_safe, :input_html => {:size => 24, :maxlength => 24} %>
+    <!-- </div>
+   <div class="col-sm-6 col-sm-6 "> -->
     <%= link_to_remove_association "remove this answer", f, class: "btn btn-danger btn-sm" %>
     </div>
   </div>
