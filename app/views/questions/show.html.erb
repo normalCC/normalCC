@@ -29,13 +29,14 @@
 
   <p>Like count: <%#= @question.likes_count %></p>
 
-
+  <%# if @question.user == current_user  %>
   <%# if can? :edit, @campaign %>
     <%= link_to "Edit", edit_question_path(@question), class: "btn btn-info" %>
   <%# end %>
   <%# if can? :destroy, @campaign %>
     <%= link_to "Delete", @question, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
-
+  <%# else %>
+  <h1>i like pizza</h1>
   <%# end %>
   
 </div>
