@@ -1,9 +1,5 @@
 class AdminUser < ActiveRecord::Base
 
- # has_and_belongs_to_many
- # has_many 
- # has_many 
-
   FORBIDDEN_USERNAMES = ['littlebopeep','humptydumpty','marymary']
 
   #validates :first_name, :presence => true,
