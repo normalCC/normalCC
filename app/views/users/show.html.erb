@@ -10,7 +10,8 @@
   </h2>
   <br>
 
-  <% if !@questions = [] %>
+  <%# if true %>
+  <% unless @questions == [] %>
     <h1>Here are the questions you posed.</h1>
     <% @questions.each do |q| %>
       <h2> <%= q.title %> </h2>

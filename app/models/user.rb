@@ -19,13 +19,13 @@ class User < ActiveRecord::Base
   
   attr_accessor :address
   geocoded_by :ip_address
- after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
+  after_validation :geocode, :if => lambda{ |obj| obj.ip_address_changed? }
   reverse_geocoded_by :latitude, :longitude
   after_validation :perform_reverse_geocode  # auto-fetch address
 
   def perform_reverse_geocode
     reverse_geocode
-    # Rails.logger.info ">>>>>>>>>>> #{address}"
+    Rails.logger.info ">>>>>>>>>>> #{address}"
 
     if address != nil
       country = Country.find_by_name address.split(",").last.strip
@@ -109,16 +109,16 @@ class User < ActiveRecord::Base
       #UserMailer.password_reset(self).deliver_now
   end
 
-  def list_of_remaining_questions
-    # list_of_answers = Scorecard.where("user_id":self).answer_id
-    # list_of_questions = Answers.where("")
-  end
+  # def list_of_remaining_questions
+  #   # list_of_answers = Scorecard.where("user_id":self).answer_id
+  #   # list_of_questions = Answers.where("")
+  # end
 
     private 
 
-      def downcase_email
-        self.email = email.downcase
-      end
+      # def downcase_email
+      #   # self.email = email.downcase
+      # end
 
       def create_activation_digest
         self.activation_token = User.new_token
