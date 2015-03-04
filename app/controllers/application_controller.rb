@@ -26,6 +26,15 @@ class ApplicationController < ActionController::Base
 
   end
 #   For EDITING AND UPDATING THE USER
+  def edit_q
+    if @question.user_id != current_user.id 
+      #@question.user_id = Question.find(params[:id]) 
+      #@user.question = User.find(params[:id])
+      #@user = User.find(session[:user_id])
+      redirect_to(root_url) #unless current_user?(@user)
+    end
+  end
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
