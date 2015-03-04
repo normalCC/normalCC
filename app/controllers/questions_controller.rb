@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:edit, :update, :show, :destroy]
   #before_action :admin_user, only: [:index]
+  #before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :edit_q, only: [:edit, :update, :destroy]
   before_action :logged_in_user
   # before_action :admin_user, only: [:index]
   
@@ -11,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new question_params
+    @question.user = current_user
     if @question.save
       redirect_to @question, notice: "Question created successfully."
     else
@@ -36,6 +39,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question = Question.find params[:id]
     # render json: output_ar(@question.graph_data)
     # @bleem = "hazarrererererere"
     @graph_data = @question.graph_data
