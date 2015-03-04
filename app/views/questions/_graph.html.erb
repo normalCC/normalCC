@@ -1,12 +1,14 @@
 <!-- This is the code for producing a graph with Google's Chart API. 
 Note: I have used the "classic chart", not their "material design" version.  -->
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 <script type="text/javascript">
 // thanks http://stackoverflow.com/questions/22492434/bootstrap-loading-remote-google-chart-into-modal
 // thanks due to: http://stackoverflow.com/users/2435481/john-guan
+// console.log('script loaded');
   google.load('visualization', '1', {'packages':['corechart'], "callback": drawChart});
 
   function drawChart() {
+    // console.log('drawChart');
     // var data = google.visualization.arrayToDataTable(<%= raw @question.graph_data %>); 
     var data = new google.visualization.DataTable();
 
@@ -15,7 +17,9 @@ Note: I have used the "classic chart", not their "material design" version.  -->
     data.addColumn({type:'string', role:'annotation'});
 
     // raw has to be here to allow the quotes
-    data.addRows(<%= raw @graph_data %>);  
+    // var graphData = <%= raw graph_data %>;
+    data.addRows(<%= raw graph_data %>);
+    // console.log(graphData);  
 
     var options = {
 
@@ -29,7 +33,7 @@ Note: I have used the "classic chart", not their "material design" version.  -->
           },
       },
       chart: {
-        title: '<%= @question.title %>',
+        title: '<%= question.title %>',
         subtitle: 'If we want a subtitle it goes here',
       },
       trendlines: {
