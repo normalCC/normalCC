@@ -1,7 +1,7 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <script type="text/javascript">
-    $("modal").on("click", function(){
-      console.log('modal was clicked! ');
+    $(".modal").on("click", function(){
+      console.log('modal was clicked! by user: <%= current_user.name %>');
     });
   </script>
   <div class="modal-dialog modal-lg">
