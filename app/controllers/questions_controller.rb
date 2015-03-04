@@ -40,12 +40,17 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find params[:id]
-    # render json: output_ar(@question.graph_data)
-    # @bleem = "hazarrererererere"
+    @next_question = Question.next(@question)
+    # render json: output_ar(@next_question)
+    if @next_question == "finished_all_questions"
+      @user = current_user
+      render :finished_all_questions
+    end
     @graph_data = @question.graph_data
     # find_question
-    # find all the data for this question, to generate graph
-    # @rawData2 =  @question.graph_data
+  end
+
+  def finished_all_questions
   end
 
   def index

@@ -1,0 +1,15 @@
+<div class='text-center'>
+  <h2 class=' splash_size'> Congratulations <br>
+    <%= (Time.now.year - @user.birth_year)-3 %> to 
+    <%= (Time.now.year - @user.birth_year)+3 %> year-old 
+    <% if @user.female %>
+      female.
+    <% else %>
+      male.
+    <% end %>
+  </h2>
+  <br> 
+  <h3>You've finished all our questions. </h3>
+  <h3>Now stand up. <br>
+  Go outside. </h3>
+</div>

@@ -1,1 +1,1 @@
-$("#chart_holder").html("<%= j render partial: '/questions/graph', locals: {question: @question, graph_data: @question.graph_data} %>");
+$("#chart_holder").html("<%= j render partial: '/questions/graph', locals: {question: @question, questions: @questions, graph_data: @question.graph_data} %>");

@@ -105,6 +105,17 @@ class Question < ActiveRecord::Base
       #    errors.add(:title, "has been restricted from use.")
       #  end
       #end
-      
+
+  # This code is used to take the user from the question they've answered
+  # to the next question.
+  def self.next(question)
+    next_question_to_go_to = where('id > ?', question.id).first
+    # check that there is indeed another question to go to, otherwise...
+    if !next_question_to_go_to 
+      # send the user to the "end of all questions page"
+      next_question_to_go_to = "finished_all_questions"
+    end
+    next_question_to_go_to
+  end 
       
 end
