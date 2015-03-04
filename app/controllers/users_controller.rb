@@ -34,8 +34,8 @@ class UsersController < ApplicationController
   end
 
   def show 
-    #@questions = Question.all
     @user = User.find(params[:id]) 
+    @questions = Question.where("user_id":@user)
   end
 
   def create

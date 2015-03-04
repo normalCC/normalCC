@@ -9,7 +9,7 @@ Note: I have used the "classic chart", not their "material design" version.  -->
 
   function drawChart() {
     // console.log('drawChart');
-    // var data = google.visualization.arrayToDataTable(<%= raw @question.graph_data %>); 
+    // var data = google.visualization.arrayToDataTable(<%= raw question.graph_data %>); 
     var data = new google.visualization.DataTable();
 
     data.addColumn('number', "answer_number");
@@ -62,12 +62,12 @@ Note: I have used the "classic chart", not their "material design" version.  -->
       width: 700,
       height: 400, 
       bar: {groupWidth: "90%"},
-      backgroundColor: "transparent",
+      backgroundColor: "white",
       // animation: { duration: 1000},  // doesn't seem to do anything exciting...
       legend: { position: 'none' }
     };
 
-    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart<%= question.id %>"));
 
     chart.draw(data, options);
 
@@ -77,4 +77,4 @@ Note: I have used the "classic chart", not their "material design" version.  -->
   }
 </script>
 
-  <div id="columnchart"></div>
+  <div id="columnchart<%= question.id %>"></div>

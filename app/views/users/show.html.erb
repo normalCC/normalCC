@@ -1,22 +1,33 @@
-<h2 class='text-center splash_size'> Greetings 
-  <%= (Time.now.year - @user.birth_year)-3 %> to 
-  <%= (Time.now.year - @user.birth_year)+3 %> year-old 
-  <% if @user.female %>
-    female!
-  <% else %>
-    male!
-  <% end %>
-</h2>
-<br>
-
-
-
-
-
-
 <div class = 'text-center'>
-  <p>Name or email: <%= @user.name %> </p>
-  <p>Birthyear: <%= @user.birth_year %> </p>
-  <p>Female: <%= @user.female %></p> 
+  <h2 class=' splash_size'> Greetings 
+    <%= (Time.now.year - @user.birth_year)-3 %> to 
+    <%= (Time.now.year - @user.birth_year)+3 %> year-old 
+    <% if @user.female %>
+      female.
+    <% else %>
+      male.
+    <% end %>
+  </h2>
+  <br>
+
+  <% if !@questions = [] %>
+    <h1>Here are the questions you posed.</h1>
+    <% @questions.each do |q| %>
+      <h2> <%= q.title %> </h2>
+      <%= render partial: "questions/graph", locals: { question: q, graph_data: q.graph_data } %>
+      <br>
+      <br>
+    <% end %>
+
+  <% else %>
+  <h1>Would you like to pose some questions?</h1>
+  <%= link_to "Yes I would.", new_question_path, class: "btn btn-info" %>
+  <%= link_to "No, I would like to answer some questions.", root_path, class: "btn btn-info" %>
+  <% end %>
+
+
+<!--   <p>Name or email: <%# @user.name %> </p>
+  <p>Birthyear: <%# @user.birth_year %> </p>
+  <p>Female: <%# @user.female %></p>  -->
 </div>
  
