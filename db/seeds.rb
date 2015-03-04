@@ -1,5 +1,5 @@
-User.create!(name: "Example User",
-  email: "Example@email.com",
+User.create!(name: "example",
+  email: "example@email.com",
   password: "pizza",
   password_confirmation: "pizza",
   birth_year: "1999",
