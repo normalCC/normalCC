@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     # render text: session[:forwarding_url]
     #user ||= User.from_omniauth(env["omniauth.auth"])
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(name: params[:session][:name].downcase)
       if user && user.authenticate(params[:session][:password])
       #login the user and redirect to the show page
         log_in user
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         redirect_back_or user
       else
       #create error
-        flash.now[:danger] = "Invalid email or password" #.now removes persistant flash message
+        flash.now[:danger] = "Invalid name or password" #.now removes persistant flash message
         render 'new'
     end
   end

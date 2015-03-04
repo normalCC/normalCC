@@ -70,50 +70,46 @@ namespace :fake_data do
   desc "Create fake questions and answers."
   task :create_qa => :environment do 
 
-    #  create the question
-    question = Question.create!(title: "What time do you go to bed?", user_id: User.first.id )
-
-    # create answers 
-    possible_answers = ["7pm", "9pm", "11pm", "1am", "3am"]
-
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question1 = Question.create!(title: "What time do you go to bed?", user_id: User.first.id )
+    possible_answers1 = ["7pm", "9pm", "11pm", "1am", "3am"]
+    possible_answers1.count.times do |a|
+      Answer.create!(title: possible_answers1[a-1], question_id: question1.id)
     end
 
-    question = Question.create!(title: "What colour is this dress?", user_id: User.first.id )
-    possible_answers = ["Are you serious?", "I'm going outside.", "You realise there is a massive refugee crisis in Syria?"]
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question2 = Question.create!(title: "What colour is this dress?", user_id: User.first.id )
+    possible_answers2 = ["Are you serious?", "I'm going outside.", "You realise there is a massive refugee crisis in Syria?"]
+    possible_answers2.count.times do |a|
+      Answer.create!(title: possible_answers2[a-1], question_id: question2.id)
     end
    
-    question = Question.create!(title: "Eating how many pieces of chocolate per day is normal?", user_id: User.first.id )
-    possible_answers = ["Nothing", "1", "2", "3", "4", "5", "6", "There is no limit."]
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question3 = Question.create!(title: "Eating how many pieces of chocolate per day is normal?", user_id: User.first.id )
+    possible_answers3 = ["Nothing", "1", "2", "3", "4", "5", "6", "There is no limit."]
+    possible_answers3.count.times do |a|
+      Answer.create!(title: possible_answers3[a-1], question_id: question3.id)
     end
 
-    question = Question.create!(title: "How many black cardigans is normal for a girl to own?", user_id: User.first.id )
-    possible_answers = ["0", "1", "2", "3", "4", "5", "6", "As many as she freaking wants."]
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question4 = Question.create!(title: "How many black cardigans is normal for a girl to own?", user_id: User.first.id )
+    possible_answers4 = ["0", "1", "2", "3", "4", "5", "6", "As many as she freaking wants."]
+    possible_answers4.count.times do |a|
+      Answer.create!(title: possible_answers4[a-1], question_id: question4.id)
     end
 
-    question = Question.create!(title: "You have two friends who are from the same family. They've fought and don't talk. Is it good to try to patch things up?", user_id: User.first.id )
-    possible_answers = ["No you idiot.", "Yes, but prepare to be burnt"]
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question5 = Question.create!(title: "Is it good to try to patch things up between two friends?", user_id: User.first.id )
+    possible_answers5 = ["No you idiot.", "Yes, but prepare to be burnt"]
+    possible_answers5.count.times do |a|
+      Answer.create!(title: possible_answers5[a-1], question_id: question5.id)
     end
  
-    question = Question.create!(title: "When are you the most productive?", user_id: User.first.id )
-    possible_answers = ["3am", "6am", "9am", "Midday", "3pm", "6pm", "9pm", "12pm"]
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question6 = Question.create!(title: "When are you the most productive?", user_id: User.first.id )
+    possible_answers6 = ["3am", "6am", "9am", "Midday", "3pm", "6pm", "9pm", "12pm"]
+    possible_answers6.count.times do |a|
+      Answer.create!(title: possible_answers6[a-1], question_id: question6.id)
     end
  
-    question = Question.create!(title: "What time do you eat?", user_id: User.first.id )
-    possible_answers = ["5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "Midnight"]
-    possible_answers.count.times do |a|
-      Answer.create!(title: possible_answers[a-1], question_id: Question.first.id)
+    question7 = Question.create!(title: "What time do you eat?", user_id: User.first.id )
+    possible_answers7 = ["5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "Midnight"]
+    possible_answers7.count.times do |a|
+      Answer.create!(title: possible_answers7[a-1], question_id: question7.id)
     end
 
 
