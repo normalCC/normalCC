@@ -109,6 +109,11 @@ class User < ActiveRecord::Base
       #UserMailer.password_reset(self).deliver_now
   end
 
+  def list_of_remaining_questions
+    # list_of_answers = Scorecard.where("user_id":self).answer_id
+    # list_of_questions = Answers.where("")
+  end
+
     private 
 
       def downcase_email

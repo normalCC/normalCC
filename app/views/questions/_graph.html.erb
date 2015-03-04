@@ -18,8 +18,8 @@ Note: I have used the "classic chart", not their "material design" version.  -->
 
     // raw has to be here to allow the quotes
     // var graphData = <%= raw graph_data %>;
-    data.addRows(<%= raw graph_data %>);
     // console.log(graphData);  
+    data.addRows(<%= raw graph_data %>);
 
     var options = {
 
@@ -40,7 +40,16 @@ Note: I have used the "classic chart", not their "material design" version.  -->
         // 0: {type: 'linear', lineWidth: 5, opacity: .3}
         0: {type: 'polynomial', degree: 3, lineWidth: 30, opacity: .3}
       },      
-      hAxis: { gridlines: {color: 'transparent'}, textPosition: 'none'},
+      hAxis: {title: '<%= question.title %>', 
+        gridlines: {color: 'transparent'}, 
+        textPosition: 'none',
+        titleTextStyle: {
+            fontName: 'Playfair Display',
+            fontSize: 20,
+            color: '#333333',
+            bold: true,
+            italic: false
+          } },
       vAxis: {title: 'normalness', gridlines: {color: 'transparent'}, textPosition: 'none', 
         titleTextStyle: {
             fontName: 'Playfair Display',
@@ -68,5 +77,4 @@ Note: I have used the "classic chart", not their "material design" version.  -->
   }
 </script>
 
-<div id="columnchart"></div>
-<%# raw @question.graph_data %>
+  <div id="columnchart"></div>
