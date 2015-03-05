@@ -1,12 +1,12 @@
 <div class = 'text-center'>
+<!-- refactor by making this a partial -->
   <h2 class=' splash_size'> Greetings 
     <%= (Time.now.year - @user.birth_year)-3 %> to 
     <%= (Time.now.year - @user.birth_year)+3 %> year-old 
+    <%# weird formatting below is necessary for no spaces to appear. %>
     <% if @user.female %>
-      female.
-    <% else %>
-      male.
-    <% end %>
+      female<% else %>
+      male<% end %><%= @country_name%>.
   </h2>
   <br>
 
