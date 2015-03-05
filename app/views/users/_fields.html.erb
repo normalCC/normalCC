@@ -5,15 +5,15 @@
  placeholder: "name" %>
 
   <div class="form-group">
-    <h4> Give us a name or email
-    <%= f.text_field :name, class: 'form-control' %>
+    <h4> Give us a name 
+    <%= f.text_field :name, class: 'form-control', placeholder: "Really thats the name you choose?" %>
     </h4>
   </div>
 
 
   <div class="form-group">
     <h4> What year were you born
-    <%= f.number_field :birth_year, class: 'form-control'%>
+    <%= f.number_field :birth_year, class: 'form-control', placeholder: "*cough* Sure you are"%>
     </h4>
   </div>
 
@@ -27,8 +27,8 @@
     <h4> Password again
     <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "confirm password" %>
     </h4>
-    <h4>
+    <h3>
     Are you a lady?
     <%= f.check_box :female, collection: [ ['Female', true], ['Male', false]] %>
-    </h4>
+    </h3>
   </div>

@@ -15,10 +15,22 @@
     <h1>Here are the questions you posed.</h1>
     <% @questions.each do |q| %>
       <h2> <%= q.title %> </h2>
+
       <%= render partial: "questions/graph", locals: { question: q, graph_data: q.graph_data } %>
       <br>
       <br>
-    <% end %>
+    <%# end %>
+
+  <%# if @question.user == current_user  %>
+  <%# if can? :edit, @campaign %>
+    <br>
+    <%= link_to "Edit your question", edit_question_path(q), class: "btn btn-info" %>
+  <%# end %>
+  <%# if can? :destroy, @campaign %>
+    <%= link_to "Delete your question", q, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
+  <%# else %>
+  <% end %>
+  
 
   <% else %>
   <h1>Would you like to pose some questions?</h1>
