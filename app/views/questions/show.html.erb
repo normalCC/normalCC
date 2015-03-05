@@ -1,4 +1,4 @@
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!-- <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"> -->
   <script type="text/javascript">
     $(".modal").on("click", function(){
       // console.log('modal was clicked! by user: <%= current_user.name %>');
@@ -37,13 +37,14 @@
 
   <!-- <p>Like count: <%#= @question.likes_count %></p> -->
 
-  <%# if @question.user == current_user  %>
+  <% if @question.user == current_user  %>
   <%# if can? :edit, @campaign %>
-    <%= link_to "Edit", edit_question_path(@question), class: "btn btn-info" %>
+    <br>
+    <%= link_to "Edit your question", edit_question_path(@question), class: "btn btn-info" %>
   <%# end %>
   <%# if can? :destroy, @campaign %>
-    <%= link_to "Delete", @question, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
+    <%= link_to "Delete your question", @question, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
   <%# else %>
-  <%# end %>
+  <% end %>
   
 </div>

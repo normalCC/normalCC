@@ -36,6 +36,12 @@ class UsersController < ApplicationController
   def show 
     @user = User.find(params[:id]) 
     @questions = Question.where("user_id" => @user)
+    if @user.country == nil
+      @country_name = ""
+    else
+      @country = Country.find(@user.country)
+      @country_name = " from #{@country.name}"
+    end
   end
 
   def create
