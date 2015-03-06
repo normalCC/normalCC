@@ -3,6 +3,8 @@ class Question < ActiveRecord::Base
   FORW = ['fuck', 'anal', 'anus', 'arse','ass', 'bitch', 'blowjob', 'cock', 'boner', 'boob', 'bum','clit', 'cunt', 'damn', 'dildo', 'dyke', 'fag', 'goddamn', 'shit', 'homo', 'jerk', 'jiz', 'nigger', 'shit', 'twat', 'vagina', 'whore', 'buttplug']
   # Question has many Answers, which is also a nested attribute on Q.
   has_many :answers, dependent: :destroy
+  has_many :scorecards, through: :answers
+  has_many :users, through: :scorecards #NB
   accepts_nested_attributes_for :answers,
                             reject_if: lambda { |x|
                             x[:title].blank? }, allow_destroy: true
@@ -22,6 +24,7 @@ class Question < ActiveRecord::Base
   before_save :cap_title
   #validates :title, presence: true, length: {minimum: 5, maximum: 30}
   scope :where_title, lambda { |term| where("questions.title iLIKE ?", "%#{term}%") }
+  scope :not_answered_by_user, ->(user){ Question.joins(:users).where('users.id <> ?', user.id)}
 
   def cap_title
     self.title.capitalize!  
