@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   get    'home'    =>  'users#home'
-  get    'data'    =>  'questions#index'
+  get    'data'    =>  'questions#data'
   get    'signup'  =>  'users#new'
   
   get    'login'   =>  'sessions#new'

@@ -4,6 +4,8 @@
   <ul>
     <% @questions.each do |f| %>
       <li><h3><%= link_to f.title, f %> </h3></li>
+       <%= link_to "Edit", edit_question_path(f), class: "btn btn-info" %>
+    <%= link_to "Delete", f, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
     <% end %>
   </ul>
 

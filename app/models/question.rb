@@ -3,6 +3,8 @@ class Question < ActiveRecord::Base
   FORW = ['fuck', 'anal', 'anus', 'arse','ass', 'bitch', 'blowjob', 'cock', 'boner', 'boob', 'bum','clit', 'cunt', 'damn', 'dildo', 'dyke', 'fag', 'goddamn', 'shit', 'homo', 'jerk', 'jiz', 'nigger', 'shit', 'twat', 'vagina', 'whore', 'buttplug']
   # Question has many Answers, which is also a nested attribute on Q.
   has_many :answers, dependent: :destroy
+  has_many :scorecards, through: :answers
+  has_many :users, through: :scorecards
   accepts_nested_attributes_for :answers,
                             reject_if: lambda { |x|
                             x[:title].blank? }, allow_destroy: true
@@ -10,7 +12,7 @@ class Question < ActiveRecord::Base
 
   #validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   validates :title, presence: true, allow_blank: false, uniqueness: {case_sensitive: false}
-#  validate :stop_words
+  validate :stop_words
 #  need to temp disable :title and :answers validation for Rake Task to run properly.
 #  validates :title, presence: { message: "Question content must be provided."}, uniqueness: true
   #validates_each :title do |stop_words|
@@ -22,6 +24,7 @@ class Question < ActiveRecord::Base
   before_save :cap_title
   #validates :title, presence: true, length: {minimum: 5, maximum: 30}
   scope :where_title, lambda { |term| where("questions.title iLIKE ?", "%#{term}%") }
+  scope :not_answered_by_user, ->(user) { Question.joins(:users).where('users.id <> ?', user.id) }
 
   def cap_title
     self.title.capitalize!  
@@ -88,18 +91,18 @@ class Question < ActiveRecord::Base
   end
 
   def check_words
-    FORW.all? do |word|
+    FORW.any? do |word|
       self.title.include? word
     end
   end
 
     private
-      #def stop_words
-      #  #if title.present? && !check_words.present?
-      # if check_words
-      #    errors.add(:title, "Please don't use profanity!")
-      #  end
-      #end
+      def stop_words
+        #if title.present? && !check_words.present?
+       if check_words
+          errors.add(:title, "Please don't use profanity!")
+        end
+      end
       #def stop_words
       #  if title.present? && title.include?(:title)
       #    errors.add(:title, "has been restricted from use.")

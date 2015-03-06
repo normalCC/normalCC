@@ -24,6 +24,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def data
+    @questions = Question.all
+  end
+
+
   def edit
     remaining = 3 - @question.answers.count
     remaining.times { @question.answers.build }

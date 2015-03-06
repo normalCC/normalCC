@@ -1,0 +1,14 @@
+<div class='white_Playfair'>
+  <h2>All questions:</h2>
+
+  <ul>
+    <% @questions.each do |f| %>
+      <li><h3><%= link_to f.title, f %> </h3></li>
+    <% f.answers.each do |a| %>
+      <%= a.title %>
+      <br>
+      <% end %>
+    <%= link_to "Edit", edit_question_path(f), class: "btn btn-info" %>
+    <%= link_to "Delete", f, class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure to delete?"} %>
+    <% end %>
+  </ul>
