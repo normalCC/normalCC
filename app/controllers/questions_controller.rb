@@ -45,11 +45,22 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # def show_next
+  #   @question, @next_question = current_user.unanswered_questions.first(2)
+
+  #   if @question.nil? || @next_question.nil?
+  #     render :finished_all_questions
+  #   else
+  #     render :show
+  #   end
+  # end
+
   def show
     @question = Question.find params[:id]
-    @next_question = Question.next(@question)
+    @next_question = current_user.unanswered_questions.where("id > ?", @question.id).first
+
     # render json: output_ar(@next_question)
-    if @next_question == "finished_all_questions"
+    if @next_question.nil?
       @user = current_user
       render :finished_all_questions
     end

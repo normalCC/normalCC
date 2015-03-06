@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :questions do 
     resources :answers, only: [:create, :update, :destroy]
+    get :show_next, :on => :collection
   end
 
   get    'home'    =>  'users#home'

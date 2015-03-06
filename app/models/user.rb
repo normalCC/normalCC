@@ -109,6 +109,12 @@ class User < ActiveRecord::Base
       #UserMailer.password_reset(self).deliver_now
   end
 
+  def unanswered_questions
+    question_ids = answers.pluck(:question_id)
+    questions = Question.where("id NOT IN (?)", question_ids)
+    questions.order(:created_at)
+  end
+
   # def list_of_remaining_questions
   #   # list_of_answers = Scorecard.where("user_id":self).answer_id
   #   # list_of_questions = Answers.where("")
