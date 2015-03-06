@@ -111,8 +111,12 @@ class User < ActiveRecord::Base
 
   def unanswered_questions
     question_ids = answers.pluck(:question_id)
-    questions = Question.where("id NOT IN (?)", question_ids)
-    questions.order(:created_at)
+    if question_ids.empty?
+      Question.all.order(:created_at)
+    else
+      questions = Question.where("id NOT IN (?)", question_ids)
+      questions.order(:created_at)
+    end
   end
 
   # def list_of_remaining_questions
